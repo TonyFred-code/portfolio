@@ -35,6 +35,7 @@ export default function Projects() {
                 <a
                   href="https://top-project-memory-card.vercel.app/"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="text-blue-400 hover:text-blue-300 transition-colors my-4"
                 >
                   View Project →
@@ -65,6 +66,7 @@ export default function Projects() {
                 <a
                   href="https://intelligent-cv-generator.vercel.app/"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="text-blue-400 hover:text-blue-300 transition-colors my-4"
                 >
                   View Project →
@@ -96,6 +98,7 @@ export default function Projects() {
                 <a
                   href="https://project-shopping-cart-gray.vercel.app/"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="text-blue-400 hover:text-blue-300 transition-colors my-4"
                 >
                   View Project →
