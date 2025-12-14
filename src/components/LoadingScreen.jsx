@@ -30,7 +30,7 @@ export default function LoadingScreen({ onComplete }) {
   useEffect(() => {
     if (phase !== "filling") return;
 
-    const duration = Math.floor(Math.random() * (700 - 300 + 1) + 300);
+    const duration = Math.floor(Math.random() * 401) + 300;
     const start = performance.now();
 
     function update(now) {
