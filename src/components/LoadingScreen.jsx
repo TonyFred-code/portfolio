@@ -24,7 +24,7 @@ export default function LoadingScreen({ onComplete }) {
     }, 80);
 
     return () => clearInterval(interval);
-  }, [phase]);
+  }, [phase, fullText]);
 
   /* ---------------- Filling phase ---------------- */
   useEffect(() => {
