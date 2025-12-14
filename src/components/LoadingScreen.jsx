@@ -91,7 +91,7 @@ export default function LoadingScreen({ onComplete }) {
         {Math.floor(progress)}%
       </span>
 
-      <div className="w-50 h-0.5 bg-gray-800 rounded overflow-hidden">
+      <div className="w-64 h-0.5 bg-gray-800 rounded overflow-hidden">
         <div
           className="h-full bg-blue-500 shadow-[0_0_15px_#3b82f6]"
           style={{ width: `${progress}%` }}
