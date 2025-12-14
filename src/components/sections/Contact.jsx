@@ -24,6 +24,8 @@ export default function Contact() {
         {
           publicKey: import.meta.env.VITE_PUBLIC_API_KEY,
         }
+        // WARNING: Ensure that domain restrictions are configured for this public API key
+        // in the EmailJS dashboard to prevent unauthorized use from other domains.
       )
       .then(() => {
         setFormData({ name: "", email: "", message: "" });
