@@ -30,8 +30,12 @@ export default function Contact() {
         alert("Message sent successfully!");
       })
       .catch((e) => {
-        console.log(e);
-        alert("Something went wrong. Please try again.");
+        const errorMsg = e?.message
+          ? `Error: ${e.message}`
+          : "An unexpected error occurred.";
+        alert(
+          `${errorMsg}\nPlease check your internet connection and try again. If the problem persists, contact support.`
+        );
       })
       .finally(() => {
         setIsSending(false);
