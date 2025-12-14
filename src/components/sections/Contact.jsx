@@ -1,6 +1,7 @@
 import { useState } from "react";
 import RevealOnScroll from "../RevealOnScroll.jsx";
 import emailjs from "@emailjs/browser";
+import { format } from "date-fns";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -28,7 +29,8 @@ export default function Contact() {
         setFormData({ name: "", email: "", message: "" });
         alert("Message sent successfully!");
       })
-      .catch(() => {
+      .catch((e) => {
+        console.log(e);
         alert("Something went wrong. Please try again.");
       })
       .finally(() => {
@@ -47,6 +49,12 @@ export default function Contact() {
             Get In Touch
           </h2>
           <form className="space-y-6" onSubmit={handleSubmit}>
+            <input type="hidden" name="to_name" value="Alfred O. Faith" />
+            <input
+              type="hidden"
+              name="time"
+              value={format(new Date(), "EEEE, MMMM do, yyyy 'at' HH:mm:ss")}
+            />
             <div className="relative">
               <input
                 type="text"
