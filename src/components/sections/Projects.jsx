@@ -34,7 +34,7 @@ export default function Projects() {
               <div className="flex justify-between  items-center">
                 <a
                   href="https://top-project-memory-card.vercel.app/"
-                  target="__blank"
+                  target="_blank"
                   className="text-blue-400 hover:text-blue-300 transition-colors my-4"
                 >
                   View Project →
@@ -63,7 +63,8 @@ export default function Projects() {
 
               <div className="flex justify-between  items-center">
                 <a
-                  href="#"
+                  href="https://intelligent-cv-generator.vercel.app/"
+                  target="_blank"
                   className="text-blue-400 hover:text-blue-300 transition-colors my-4"
                 >
                   View Project →
@@ -94,7 +95,7 @@ export default function Projects() {
               <div className="flex justify-between  items-center">
                 <a
                   href="https://project-shopping-cart-gray.vercel.app/"
-                  target="__blank"
+                  target="_blank"
                   className="text-blue-400 hover:text-blue-300 transition-colors my-4"
                 >
                   View Project →
