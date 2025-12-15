@@ -116,19 +116,6 @@ export default function Contact() {
                 }
               />
             </div>
-
-            {/* <button
-              type="submit"
-              disabled={isSending}
-              className={`w-full py-3 px-6 rounded font-medium transition ${
-                isSending
-                  ? "bg-blue-400 cursor-not-allowed"
-                  : "bg-blue-500 hover:-translate-y-0.5"
-              }
-  `}
-            >
-              {isSending ? "Sending..." : "Send Message"}
-            </button> */}
             <SendButton status={status} />
           </form>
         </div>
