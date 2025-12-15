@@ -5,7 +5,11 @@ function Word({ text, startIndex = 0 }) {
   return (
     <span>
       {text.split("").map((char, i) => (
-        <span key={i} className="letter" style={{ "--i": startIndex + i }}>
+        <span
+          key={`${char}-${startIndex + i}`}
+          className="letter"
+          style={{ "--i": startIndex + i }}
+        >
           {char}
         </span>
       ))}
