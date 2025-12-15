@@ -2,6 +2,7 @@ import { useState } from "react";
 import RevealOnScroll from "../RevealOnScroll.jsx";
 import emailjs from "@emailjs/browser";
 import { format } from "date-fns";
+import SendButton from "../SendButton.jsx";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -10,11 +11,11 @@ export default function Contact() {
     message: "",
   });
 
-  const [isSending, setIsSending] = useState(false);
+  const [status, setStatus] = useState("idle");
 
   function handleSubmit(e) {
     e.preventDefault();
-    setIsSending(true);
+    setStatus("sending");
 
     emailjs
       .sendForm(
@@ -30,6 +31,7 @@ export default function Contact() {
       .then(() => {
         setFormData({ name: "", email: "", message: "" });
         alert("Message sent successfully!");
+        setStatus("sent");
       })
       .catch((e) => {
         const errorMsg = e?.message
@@ -38,9 +40,10 @@ export default function Contact() {
         alert(
           `${errorMsg}\nPlease check your internet connection and try again. If the problem persists, contact support.`
         );
+        setStatus("error");
       })
       .finally(() => {
-        setIsSending(false);
+        setTimeout(() => setStatus("idle"), 2000);
       });
   }
 
@@ -106,7 +109,7 @@ export default function Contact() {
               />
             </div>
 
-            <button
+            {/* <button
               type="submit"
               disabled={isSending}
               className={`w-full py-3 px-6 rounded font-medium transition ${
@@ -117,7 +120,8 @@ export default function Contact() {
   `}
             >
               {isSending ? "Sending..." : "Send Message"}
-            </button>
+            </button> */}
+            <SendButton status={status} />
           </form>
         </div>
       </RevealOnScroll>
