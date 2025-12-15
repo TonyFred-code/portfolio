@@ -3,7 +3,8 @@ import RevealOnScroll from "../RevealOnScroll.jsx";
 import emailjs from "@emailjs/browser";
 import { format } from "date-fns";
 import SendButton from "../SendButton.jsx";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
+import FORM_STATUS from "../../constants/form-status.js";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -12,11 +13,11 @@ export default function Contact() {
     message: "",
   });
 
-  const [status, setStatus] = useState("idle");
+  const [status, setStatus] = useState(FORM_STATUS.IDLE);
 
   function handleSubmit(e) {
     e.preventDefault();
-    setStatus("sending");
+    setStatus(FORM_STATUS.SENDING);
 
     emailjs
       .sendForm(
@@ -34,7 +35,7 @@ export default function Contact() {
 
         setFormData({ name: "", email: "", message: "" });
         toast.success("Message sent successfully!", { closeOnClick: true });
-        setStatus("sent");
+        setStatus(FORM_STATUS.SENT);
       })
       .catch((e) => {
         const errorMsg = e?.message
@@ -47,10 +48,10 @@ export default function Contact() {
             closeOnClick: true,
           }
         );
-        setStatus("error");
+        setStatus(FORM_STATUS.FAILED);
       })
       .finally(() => {
-        setTimeout(() => setStatus("idle"), 2000);
+        setTimeout(() => setStatus(FORM_STATUS.IDLE), 2000);
       });
   }
 
