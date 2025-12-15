@@ -3,6 +3,7 @@ import RevealOnScroll from "../RevealOnScroll.jsx";
 import emailjs from "@emailjs/browser";
 import { format } from "date-fns";
 import SendButton from "../SendButton.jsx";
+import { toast, ToastContainer } from "react-toastify";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -25,20 +26,26 @@ export default function Contact() {
         {
           publicKey: import.meta.env.VITE_PUBLIC_API_KEY,
         }
-        // WARNING: Ensure that domain restrictions are configured for this public API key
-        // in the EmailJS dashboard to prevent unauthorized use from other domains.
       )
-      .then(() => {
+      .then((result) => {
+        if (result.status !== 200) {
+          throw new Error(result.status);
+        }
+
         setFormData({ name: "", email: "", message: "" });
-        alert("Message sent successfully!");
+        toast.success("Message sent successfully!", { closeOnClick: true });
         setStatus("sent");
       })
       .catch((e) => {
         const errorMsg = e?.message
           ? `Error: ${e.message}`
           : "An unexpected error occurred.";
-        alert(
-          `${errorMsg}\nPlease check your internet connection and try again. If the problem persists, contact support.`
+        toast.error(
+          `${errorMsg}\n.
+          Please check your internet connection and try again.`,
+          {
+            closeOnClick: true,
+          }
         );
         setStatus("error");
       })
