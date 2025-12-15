@@ -28,11 +28,7 @@ export default function Contact() {
           publicKey: import.meta.env.VITE_PUBLIC_API_KEY,
         }
       )
-      .then((result) => {
-        if (result.status !== 200) {
-          throw new Error(result.status);
-        }
-
+      .then(() => {
         setFormData({ name: "", email: "", message: "" });
         toast.success("Message sent successfully!", { closeOnClick: true });
         setStatus(FORM_STATUS.SENT);
@@ -42,8 +38,7 @@ export default function Contact() {
           ? `Error: ${e.message}`
           : "An unexpected error occurred.";
         toast.error(
-          `${errorMsg}\n.
-          Please check your internet connection and try again.`,
+          `${errorMsg}.\nPlease check your internet connection and try again.`,
           {
             closeOnClick: true,
           }
