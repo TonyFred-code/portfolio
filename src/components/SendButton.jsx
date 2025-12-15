@@ -45,7 +45,7 @@ export default function SendButton({ status }) {
       {status === FORM_CONSTANTS.SENDING && (
         <>
           <Loader className="icon-send" />
-          <span>Sending…</span>
+          <span>Sending...</span>
         </>
       )}
 
