@@ -48,7 +48,7 @@ function App() {
           </a>
         </div>
       </div>
-      <ToastContainer />
+      <ToastContainer theme="dark" />
     </>
   );
 }
