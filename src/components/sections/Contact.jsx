@@ -2,6 +2,9 @@ import { useState } from "react";
 import RevealOnScroll from "../RevealOnScroll.jsx";
 import emailjs from "@emailjs/browser";
 import { format } from "date-fns";
+import SendButton from "../SendButton.jsx";
+import { toast } from "react-toastify";
+import FORM_STATUS from "../../constants/form-status.js";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -10,11 +13,11 @@ export default function Contact() {
     message: "",
   });
 
-  const [isSending, setIsSending] = useState(false);
+  const [status, setStatus] = useState(FORM_STATUS.IDLE);
 
   function handleSubmit(e) {
     e.preventDefault();
-    setIsSending(true);
+    setStatus(FORM_STATUS.SENDING);
 
     emailjs
       .sendForm(
@@ -24,23 +27,26 @@ export default function Contact() {
         {
           publicKey: import.meta.env.VITE_PUBLIC_API_KEY,
         }
-        // WARNING: Ensure that domain restrictions are configured for this public API key
-        // in the EmailJS dashboard to prevent unauthorized use from other domains.
       )
       .then(() => {
         setFormData({ name: "", email: "", message: "" });
-        alert("Message sent successfully!");
+        toast.success("Message sent successfully!", { closeOnClick: true });
+        setStatus(FORM_STATUS.SENT);
       })
       .catch((e) => {
         const errorMsg = e?.message
           ? `Error: ${e.message}`
           : "An unexpected error occurred.";
-        alert(
-          `${errorMsg}\nPlease check your internet connection and try again. If the problem persists, contact support.`
+        toast.error(
+          `${errorMsg}.\nPlease check your internet connection and try again.`,
+          {
+            closeOnClick: true,
+          }
         );
+        setStatus(FORM_STATUS.FAILED);
       })
       .finally(() => {
-        setIsSending(false);
+        setTimeout(() => setStatus(FORM_STATUS.IDLE), 2000);
       });
   }
 
@@ -105,19 +111,7 @@ export default function Contact() {
                 }
               />
             </div>
-
-            <button
-              type="submit"
-              disabled={isSending}
-              className={`w-full py-3 px-6 rounded font-medium transition ${
-                isSending
-                  ? "bg-blue-400 cursor-not-allowed"
-                  : "bg-blue-500 hover:-translate-y-0.5"
-              }
-  `}
-            >
-              {isSending ? "Sending..." : "Send Message"}
-            </button>
+            <SendButton status={status} />
           </form>
         </div>
       </RevealOnScroll>
