@@ -74,7 +74,7 @@ export default function LoadingScreen({ onComplete }) {
     >
       <h1
         className="
-          text-5xl font-bold font-mono
+          text-3xl md:text-5xl font-bold font-mono
           text-transparent bg-clip-text
           bg-linear-to-r from-blue-400 via-cyan-500 to-pink-600
           bg-no-repeat
