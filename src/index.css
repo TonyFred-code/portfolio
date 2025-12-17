@@ -11,6 +11,10 @@ body {
   color: var(--foreground);
 }
 
+html {
+  @apply scroll-smooth;
+}
+
 :root {
   /* Light mode */
   --background: #ffffff; /* light */
