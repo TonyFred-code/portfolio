@@ -66,19 +66,22 @@ export default function LoadingScreen({ onComplete }) {
   return (
     <div
       className={`
-        fixed inset-0 z-50 bg-black
-        flex flex-col items-center justify-center gap-6
-        transition-opacity duration-400
-        ${fadeOut ? "opacity-0" : "opacity-100"}
-      `}
+    fixed inset-0 z-50
+    bg-slate-50 dark:bg-slate-950
+    flex flex-col items-center justify-center gap-6
+    transition-opacity duration-400
+    ${fadeOut ? "opacity-0" : "opacity-100"}
+  `}
     >
       <h1
         className="
-          text-3xl md:text-5xl font-bold font-mono
-          text-transparent bg-clip-text
-          bg-linear-to-r from-blue-400 via-cyan-500 to-pink-600
-          bg-no-repeat
-        "
+      text-3xl md:text-5xl font-bold font-mono
+      text-transparent bg-clip-text
+      bg-linear-to-r
+      from-indigo-500 via-sky-500 to-fuchsia-500
+      dark:from-indigo-400 dark:via-sky-400 dark:to-fuchsia-400
+      bg-no-repeat
+    "
         style={{
           backgroundSize:
             phase === "filling" || fadeOut ? `${progress}% 100%` : "0% 100%",
@@ -87,13 +90,18 @@ export default function LoadingScreen({ onComplete }) {
         {text}
       </h1>
 
-      <span className="text-sm text-blue-500 tracking-wide">
+      <span className="text-sm text-sky-600 dark:text-sky-400 tracking-wide">
         {Math.floor(progress)}%
       </span>
 
-      <div className="w-64 h-0.5 bg-gray-800 rounded overflow-hidden">
+      <div className="w-64 h-0.5 bg-slate-200 dark:bg-slate-800 rounded overflow-hidden">
         <div
-          className="h-full bg-blue-500 shadow-[0_0_15px_#3b82f6]"
+          className="
+        h-full
+        bg-sky-500 dark:bg-sky-400
+        shadow-[0_0_12px_#0ea5e9]
+        dark:shadow-[0_0_12px_#38bdf8]
+      "
           style={{ width: `${progress}%` }}
         />
       </div>
