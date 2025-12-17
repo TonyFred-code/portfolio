@@ -14,6 +14,7 @@ body {
   --color-border: var(--border);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-secondary: var(--secondary);
 
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
@@ -27,9 +28,9 @@ body {
   }
   :root {
     /* Neutral */
-    --background: #ffffff;
+    --background: #f2f0ef;
     --foreground: #1c1c28;
-    --text-secondary: #555555;
+    --secondary: #555555;
     --border: #d0d0d0;
     --card: #f9f9f9;
 
@@ -41,7 +42,7 @@ body {
   .dark {
     --background: #0a0a0a;
     --foreground: #e6e6f2;
-    --text-secondary: #b0b0c0;
+    --secondary: #b0b0c0;
     --border: #3b3b3b;
     --card: #121212;
 
