@@ -67,7 +67,7 @@ export default function LoadingScreen({ onComplete }) {
     <div
       className={`
     fixed inset-0 z-50
-    bg-slate-50 dark:bg-slate-950
+    bg-background
     flex flex-col items-center justify-center gap-6
     transition-opacity duration-400
     ${fadeOut ? "opacity-0" : "opacity-100"}
@@ -94,7 +94,7 @@ export default function LoadingScreen({ onComplete }) {
         {Math.floor(progress)}%
       </span>
 
-      <div className="w-64 h-0.5 bg-slate-200 dark:bg-slate-800 rounded overflow-hidden">
+      <div className="w-64 h-0.5 bg-gray-400 dark:bg-gray-700 rounded overflow-hidden">
         <div
           className="
         h-full
