@@ -1,5 +1,4 @@
 import { Laptop, Moon, Sun } from "lucide-react";
-import { useEffect, useState } from "react";
 
 const options = [
   { value: "system", Icon: Laptop, label: "System" },
@@ -7,26 +6,7 @@ const options = [
   { value: "dark", Icon: Moon, label: "Dark" },
 ];
 
-export default function ThemeToggle() {
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("theme") || "system";
-  });
-
-  useEffect(() => {
-    const root = document.documentElement;
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-
-    if (theme === "dark" || (theme === "system" && prefersDark)) {
-      root.classList.add("dark");
-    } else {
-      root.classList.remove("dark");
-    }
-
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
+export default function ThemeToggle({ theme, setTheme }) {
   return (
     <div
       role="radiogroup"

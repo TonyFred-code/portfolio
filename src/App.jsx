@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LoadingScreen from "./components/LoadingScreen.jsx";
 import NavBar from "./components/NavBar.jsx";
 import MobileMenu from "./components/MobileMenu.jsx";
@@ -12,14 +12,37 @@ import { ToastContainer } from "react-toastify";
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") || "system"
+  );
+
+  // Apply theme to root
+  useEffect(() => {
+    const root = document.documentElement;
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+
+    if (theme === "dark" || (theme === "system" && prefersDark)) {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+    }
+
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  // Determine toast theme
+  const toastTheme = theme === "light" ? "light" : "dark";
 
   return (
     <>
       {!isLoaded && <LoadingScreen onComplete={() => setIsLoaded(true)} />}
       <div
-        className={`min-h-screen transition-opacity duration-700 ${
-          isLoaded ? "opacity-100" : "opacity-0"
-        } bg-black text-gray-100`}
+        className={`min-h-screen transition-opacity duration-700
+          ${isLoaded ? "opacity-100" : "opacity-0"}
+          bg-background text-foreground
+        `}
       >
         <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
@@ -27,9 +50,9 @@ function App() {
         <About />
         <Projects />
         <Contact />
-        <Footer />
+        <Footer setTheme={setTheme} currentTheme={theme} />
       </div>
-      <ToastContainer theme="dark" />
+      <ToastContainer theme={toastTheme} />
     </>
   );
 }

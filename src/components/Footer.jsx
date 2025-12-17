@@ -1,9 +1,9 @@
 import ToggleTheme from "./ToggleTheme.jsx";
 
-export default function Footer() {
+export default function Footer({ currentTheme, setTheme }) {
   return (
     <footer className="text-xs text-gray-300 flex flex-col items-center justify-around md:flex-row py-3 gap-2">
-      <ToggleTheme />
+      <ToggleTheme theme={currentTheme} setTheme={setTheme} />
 
       <div className="flex items-center gap-3">
         <span>© {new Date().getFullYear()} Alfred Faith</span>
