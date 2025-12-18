@@ -12,6 +12,7 @@ export default function MobileMenu({ menuOpen, setMenuOpen }) {
           <a
             onClick={() => setMenuOpen(false)}
             href={`#${link.toLowerCase()}`}
+            key={link}
             className={`text-2xl font-semibold text-foreground my-4 transform transition-transform duration-300 ${
               menuOpen ? "opacity-100 translate-y-0" : "translate-y-5 opacity-0"
             }`}
