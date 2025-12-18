@@ -7,12 +7,19 @@ export default function Home() {
       className="min-h-screen flex items-center justify-center relative"
     >
       <RevealOnScroll>
-        <div className="text-center z-10 px-4 flex flex-col items-center -mb-3 md:mb-0">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-linear-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent leading-tight">
+        <div className="text-center z-10 px-4 flex flex-col items-center -mb-10 md:mb-0">
+          <h1
+            className="
+      text-5xl md:text-7xl font-bold mb-6 leading-tight
+      text-transparent bg-clip-text
+      bg-linear-to-r
+      from-primary via-cyan-500 to-primary
+    "
+          >
             Hi, I'm Alfred Faith
           </h1>
 
-          <p className="text-gray-400 text-xl mb-8 max-w-lg mx-auto">
+          <p className="text-secondary text-xl mb-8 max-w-lg mx-auto">
             I build full-stack web applications that just work — thoughtful
             design, solid architecture, and smooth user experiences.
           </p>
@@ -20,13 +27,29 @@ export default function Home() {
           <div className="flex flex-col gap-4 md:flex-row justify-center max-w-3xs md:max-w-none">
             <a
               href="#projects"
-              className="bg-blue-500 text-white py-3 px-6 rounded font-medium transition relative overflow-hidden hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59, 130, 246, 0.4)]"
+              className="
+        bg-primary text-primary-foreground
+        py-3 px-6 rounded font-medium
+        transition relative overflow-hidden
+        hover:bg-primary/80
+        hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(14,165,233,0.4)]
+        dark:hover:shadow-[0_0_5px_rgba(34,211,238,0.4)]
+      "
             >
               View Projects
             </a>
+
             <a
               href="#contact"
-              className="border border-blue-500/50 text-blue-500 py-3 px-6 rounded font-medium transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59, 130, 246, 0.2)] hover:bg-blue-500/10"
+              className="
+        border border-primary/50 text-primary
+        py-3 px-6 rounded font-medium
+        transition-all duration-200
+        hover:-translate-y-0.5
+        hover:shadow-[0_0_15px_rgba(14,165,233,0.2
+        hover:bg-primary/10
+        dark:hover:shadow-[0_0_15px_rgba(34,211,238,0.2
+      "
             >
               Contact Me
             </a>
