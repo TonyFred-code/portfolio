@@ -45,7 +45,8 @@ export default function NavBar({ menuOpen, setMenuOpen }) {
                 href={`#${item.toLowerCase()}`}
                 className="
               text-foreground
-              hover:
+              hover:text-foreground/70
+              
               transition-colors
             "
               >
