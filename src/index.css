@@ -29,14 +29,15 @@ body {
   :root {
     /* Neutral */
     --background: #f2f0ef;
-    --foreground: #1c1c28;
+    --foreground: #202029;
     --secondary: #555555;
     --border: #d0d0d0;
     --card: #f9f9f9;
 
     /* Primary */
-    --primary: #0ea5e9;
-    --primary-hover: #3b82f6;
+    --primary: #0487c2;
+    --primary-foreground: #f2f0ef;
+    --primary-hover: #78d2fa;
   }
 
   .dark {
@@ -46,7 +47,8 @@ body {
     --border: #3b3b3b;
     --card: #121212;
 
-    --primary: #22d3ee;
+    --primary: #2b7fff;
+    --primary-foreground: #f2f0ef;
     --primary-hover: #60a5fa;
   }
 }
