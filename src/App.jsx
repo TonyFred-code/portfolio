@@ -13,17 +13,16 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState(
-    () => localStorage.getItem("theme") || "system"
+    () => localStorage.getItem("theme") || "dark"
   );
 
   // Apply theme to root
   useEffect(() => {
     const root = document.documentElement;
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
 
-    if (theme === "dark" || (theme === "system" && prefersDark)) {
+    // TODO: add system theme preference logic
+
+    if (theme === "dark") {
       root.classList.add("dark");
     } else {
       root.classList.remove("dark");

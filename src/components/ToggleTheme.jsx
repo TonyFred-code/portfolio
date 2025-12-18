@@ -1,7 +1,6 @@
 import { Laptop, Moon, Sun } from "lucide-react";
 
 const options = [
-  { value: "system", Icon: Laptop, label: "System" },
   { value: "light", Icon: Sun, label: "Light" },
   { value: "dark", Icon: Moon, label: "Dark" },
 ];
@@ -30,12 +29,8 @@ export default function ThemeToggle({ theme, setTheme }) {
             onClick={() => setTheme(value)}
             className={`
               flex items-center gap-1 px-3 py-1.5 rounded-full text-sm
-              transition-colors
-              ${
-                active
-                  ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-sm"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
-              }
+              transition-colors text-foreground
+              ${active && "bg-background shadow-sm"}
             `}
           >
             <Icon className="h-4 w-4" />
