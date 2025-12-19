@@ -1,8 +1,18 @@
 {
   "name": "portfolio",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "1.0.0",
   "type": "module",
+  "homepage": "https://alfredfaith.me",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TonyFred-code/portfolio"
+  },
+  "bugs": {
+    "url": "https://github.com/TonyFred-code/portfolio/issues"
+  },
+  "author": "Alfred Faith",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
