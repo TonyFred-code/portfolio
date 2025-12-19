@@ -29,7 +29,7 @@ export default function Contact() {
     );
 
     const timeoutPromise = new Promise((_, reject) =>
-      setTimeout(() => reject(new Error("Request timed out")), 2000)
+      setTimeout(() => reject(new Error("Request timed out")), 10000)
     );
 
     Promise.race([sendPromise, timeoutPromise])
@@ -75,32 +75,40 @@ export default function Contact() {
               value={format(new Date(), "EEEE, MMMM do, yyyy 'at' HH:mm:ss")}
             />
             <div className="relative">
+              <label htmlFor="name" className="sr-only">
+                Name:{" "}
+              </label>
               <input
                 type="text"
                 id="name"
                 name="name"
                 value={formData.name}
                 required
-                className="w-full bg-card/80 border border-border rounded px-4 py-3 text-foreground transition focus:outline-none focus:border-primary focus:bg-blue-500/5 placeholder:text-secondary/50"
+                className="w-full bg-card/80 border border-border rounded px-4 py-3 text-foreground transition focus:outline-none focus:border-primary focus:bg-blue-500/5 placeholder:text-secondary/50 disabled:opacity-70 disabled:cursor-not-allowed"
                 placeholder="Name..."
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
+                disabled={status === FORM_STATUS.SENDING}
               />
             </div>
 
             <div className="relative">
+              <label htmlFor="email" className="sr-only">
+                Email Address:{" "}
+              </label>
               <input
                 type="email"
                 id="email"
                 name="email"
                 required
-                className="w-full bg-card/80 border border-border rounded px-4 py-3 text-foreground transition focus:outline-none focus:border-primary focus:bg-blue-500/5 placeholder:text-secondary/50"
+                className="w-full bg-card/80 border border-border rounded px-4 py-3 text-foreground transition focus:outline-none focus:border-primary focus:bg-blue-500/5 placeholder:text-secondary/50 disabled:opacity-70 disabled:cursor-not-allowed"
                 placeholder="example@gmail.com"
                 value={formData.email}
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
+                disabled={status === FORM_STATUS.SENDING}
               />
             </div>
 
@@ -110,12 +118,13 @@ export default function Contact() {
                 name="message"
                 rows={5}
                 required
-                className="w-full bg-card/80 border border-border rounded px-4 py-3 text-foreground transition focus:outline-none focus:border-primary focus:bg-blue-500/5 placeholder:text-secondary/50"
+                className="w-full bg-card/80 border border-border rounded px-4 py-3 text-foreground transition focus:outline-none focus:border-primary focus:bg-blue-500/5 placeholder:text-secondary/50 disabled:opacity-70 disabled:cursor-not-allowed"
                 placeholder="Your Message..."
                 value={formData.message}
                 onChange={(e) =>
                   setFormData({ ...formData, message: e.target.value })
                 }
+                disabled={status === FORM_STATUS.SENDING}
               />
             </div>
             <SendButton status={status} />
