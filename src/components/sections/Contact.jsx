@@ -19,30 +19,37 @@ export default function Contact() {
     e.preventDefault();
     setStatus(FORM_STATUS.SENDING);
 
-    emailjs
-      .sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        e.target,
-        {
-          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_API_KEY,
-        }
-      )
+    const sendPromise = emailjs.sendForm(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      e.target,
+      {
+        publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_API_KEY,
+      }
+    );
+
+    const timeoutPromise = new Promise((_, reject) =>
+      setTimeout(() => reject(new Error("Request timed out")), 10000)
+    );
+
+    Promise.race([sendPromise, timeoutPromise])
       .then(() => {
         setFormData({ name: "", email: "", message: "" });
         toast.success("Message sent successfully!", { closeOnClick: true });
         setStatus(FORM_STATUS.SENT);
       })
       .catch((e) => {
-        const errorMsg = e?.message
-          ? `Error: ${e.message}`
-          : "An unexpected error occurred.";
+        const isTimeout = e.message === "Request timed out";
+
         toast.error(
-          `${errorMsg}.\nPlease check your internet connection and try again.`,
-          {
-            closeOnClick: true,
-          }
+          isTimeout
+            ? "Request took too long. Please check your connection and try again."
+            : e?.message
+            ? `Error: ${e.message}`
+            : "An unexpected error occurred.",
+          { closeOnClick: true }
         );
+
         setStatus(FORM_STATUS.FAILED);
       })
       .finally(() => {
@@ -68,47 +75,59 @@ export default function Contact() {
               value={format(new Date(), "EEEE, MMMM do, yyyy 'at' HH:mm:ss")}
             />
             <div className="relative">
+              <label htmlFor="name" className="sr-only">
+                Name:
+              </label>
               <input
                 type="text"
                 id="name"
                 name="name"
                 value={formData.name}
                 required
-                className="w-full bg-card/80 border border-border rounded px-4 py-3 text-foreground transition focus:outline-none focus:border-primary focus:bg-blue-500/5 placeholder:text-secondary/50"
+                className="w-full bg-card/80 border border-border rounded px-4 py-3 text-foreground transition focus:outline-none focus:border-primary focus:bg-blue-500/5 placeholder:text-secondary/50 disabled:opacity-70 disabled:cursor-not-allowed"
                 placeholder="Name..."
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
+                disabled={status === FORM_STATUS.SENDING}
               />
             </div>
 
             <div className="relative">
+              <label htmlFor="email" className="sr-only">
+                Email Address:
+              </label>
               <input
                 type="email"
                 id="email"
                 name="email"
                 required
-                className="w-full bg-card/80 border border-border rounded px-4 py-3 text-foreground transition focus:outline-none focus:border-primary focus:bg-blue-500/5 placeholder:text-secondary/50"
+                className="w-full bg-card/80 border border-border rounded px-4 py-3 text-foreground transition focus:outline-none focus:border-primary focus:bg-blue-500/5 placeholder:text-secondary/50 disabled:opacity-70 disabled:cursor-not-allowed"
                 placeholder="example@gmail.com"
                 value={formData.email}
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
+                disabled={status === FORM_STATUS.SENDING}
               />
             </div>
 
             <div className="relative">
+              <label htmlFor="message" className="sr-only">
+                Message:
+              </label>
               <textarea
                 id="message"
                 name="message"
                 rows={5}
                 required
-                className="w-full bg-card/80 border border-border rounded px-4 py-3 text-foreground transition focus:outline-none focus:border-primary focus:bg-blue-500/5 placeholder:text-secondary/50"
+                className="w-full bg-card/80 border border-border rounded px-4 py-3 text-foreground transition focus:outline-none focus:border-primary focus:bg-blue-500/5 placeholder:text-secondary/50 disabled:opacity-70 disabled:cursor-not-allowed"
                 placeholder="Your Message..."
                 value={formData.message}
                 onChange={(e) =>
                   setFormData({ ...formData, message: e.target.value })
                 }
+                disabled={status === FORM_STATUS.SENDING}
               />
             </div>
             <SendButton status={status} />

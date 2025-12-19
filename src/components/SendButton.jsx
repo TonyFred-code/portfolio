@@ -1,5 +1,5 @@
 import { CheckIcon, Loader, RotateCcw, Send } from "lucide-react";
-import FORM_CONSTANTS from "../constants/form-status.js";
+import FORM_STATUS from "../constants/form-status.js";
 
 function Word({ text, startIndex = 0 }) {
   return (
@@ -21,7 +21,7 @@ export default function SendButton({ status }) {
   return (
     <button
       type="submit"
-      disabled={status === FORM_CONSTANTS.SENDING}
+      disabled={status === FORM_STATUS.SENDING}
       className="
         w-full h-14 rounded
         bg-primary text-primary-foreground
@@ -32,28 +32,28 @@ export default function SendButton({ status }) {
         disabled:opacity-70 disabled:cursor-not-allowed
       "
     >
-      {status === FORM_CONSTANTS.IDLE && (
+      {status === FORM_STATUS.IDLE && (
         <>
           <Send />
           <Word text="Send" />
         </>
       )}
 
-      {status === FORM_CONSTANTS.FAILED && (
+      {status === FORM_STATUS.FAILED && (
         <>
           <RotateCcw />
           <Word text="Resend" />
         </>
       )}
 
-      {status === FORM_CONSTANTS.SENDING && (
+      {status === FORM_STATUS.SENDING && (
         <>
           <Loader className="icon-send" />
           <span>Sending...</span>
         </>
       )}
 
-      {status === FORM_CONSTANTS.SENT && (
+      {status === FORM_STATUS.SENT && (
         <>
           <CheckIcon className="icon-check" />
           <Word text="Sent" startIndex={4} />
