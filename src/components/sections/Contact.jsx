@@ -21,11 +21,11 @@ export default function Contact() {
 
     emailjs
       .sendForm(
-        import.meta.env.VITE_SERVICE_ID,
-        import.meta.env.VITE_TEMPLATE_ID,
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         e.target,
         {
-          publicKey: import.meta.env.VITE_PUBLIC_API_KEY,
+          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_API_KEY,
         }
       )
       .then(() => {
@@ -57,7 +57,7 @@ export default function Contact() {
     >
       <RevealOnScroll>
         <div className="flex flex-col items-center">
-          <h2 className="text-3xl font-bold mb-8 bg-linear-to-r from-blue-500 to-cyan-400 text-center bg-clip-text text-transparent">
+          <h2 className="text-3xl font-bold mb-8 bg-linear-to-r from-primary to-cyan-400 text-center bg-clip-text text-transparent">
             Get In Touch
           </h2>
           <form className="space-y-6 w-4/5 max-w-150" onSubmit={handleSubmit}>
@@ -74,7 +74,7 @@ export default function Contact() {
                 name="name"
                 value={formData.name}
                 required
-                className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"
+                className="w-full bg-card/80 border border-border rounded px-4 py-3 text-foreground transition focus:outline-none focus:border-primary focus:bg-blue-500/5 placeholder:text-secondary/50"
                 placeholder="Name..."
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
@@ -88,7 +88,7 @@ export default function Contact() {
                 id="email"
                 name="email"
                 required
-                className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"
+                className="w-full bg-card/80 border border-border rounded px-4 py-3 text-foreground transition focus:outline-none focus:border-primary focus:bg-blue-500/5 placeholder:text-secondary/50"
                 placeholder="example@gmail.com"
                 value={formData.email}
                 onChange={(e) =>
@@ -103,7 +103,7 @@ export default function Contact() {
                 name="message"
                 rows={5}
                 required
-                className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"
+                className="w-full bg-card/80 border border-border rounded px-4 py-3 text-foreground transition focus:outline-none focus:border-primary focus:bg-blue-500/5 placeholder:text-secondary/50"
                 placeholder="Your Message..."
                 value={formData.message}
                 onChange={(e) =>

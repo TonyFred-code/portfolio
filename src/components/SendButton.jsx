@@ -24,7 +24,7 @@ export default function SendButton({ status }) {
       disabled={status === FORM_CONSTANTS.SENDING}
       className="
         w-full h-14 rounded
-        bg-blue-500 text-white
+        bg-primary text-primary-foreground
         font-semibold tracking-wide
         flex items-center justify-center gap-2
         cursor-pointer

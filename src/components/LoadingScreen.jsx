@@ -8,48 +8,48 @@ export default function LoadingScreen({ onComplete }) {
   const [phase, setPhase] = useState("typing"); // typing | filling | done
   const [fadeOut, setFadeOut] = useState(false);
 
-  /* ---------------- Typing phase ---------------- */
   useEffect(() => {
-    if (phase !== "typing") return;
+    let rafId;
+    let start = performance.now();
 
-    let index = 0;
-    const interval = setInterval(() => {
-      setText(fullText.substring(0, index + 1));
-      index++;
+    // typing config
+    const typingSpeed = 130; // ms per char
 
-      if (index >= fullText.length) {
-        clearInterval(interval);
-        setPhase("filling");
-      }
-    }, 80);
+    // filling config
+    const fillDuration = Math.floor(Math.random() * 301) + 300;
 
-    return () => clearInterval(interval);
-  }, [phase, fullText]);
-
-  /* ---------------- Filling phase ---------------- */
-  useEffect(() => {
-    if (phase !== "filling") return;
-
-    const duration = Math.floor(Math.random() * 401) + 300;
-    const start = performance.now();
-
-    function update(now) {
+    function tick(now) {
       const elapsed = now - start;
-      const pct = Math.min((elapsed / duration) * 100, 100);
 
-      setProgress(pct);
+      if (phase === "typing") {
+        const chars = Math.floor(elapsed / typingSpeed);
+        const clamped = Math.min(chars, fullText.length);
 
-      if (pct < 100) {
-        requestAnimationFrame(update);
-      } else {
-        setTimeout(() => {
-          setFadeOut(true);
-        }, 300);
+        setText(fullText.slice(0, clamped));
+
+        if (clamped === fullText.length) {
+          setTimeout(() => {
+            setPhase("filling");
+            start = now; // reset clock for filling
+          }, 100);
+        }
+      } else if (phase === "filling") {
+        const pct = Math.min((elapsed / fillDuration) * 100, 100);
+        setProgress(pct);
+
+        if (pct === 100) {
+          setTimeout(() => setFadeOut(true), 300);
+          return; // stop loop
+        }
       }
+
+      rafId = requestAnimationFrame(tick);
     }
 
-    requestAnimationFrame(update);
-  }, [phase]);
+    rafId = requestAnimationFrame(tick);
+
+    return () => cancelAnimationFrame(rafId);
+  }, [phase, fullText]);
 
   /* ---------------- Exit phase ---------------- */
   useEffect(() => {
@@ -66,19 +66,18 @@ export default function LoadingScreen({ onComplete }) {
   return (
     <div
       className={`
-        fixed inset-0 z-50 bg-black
-        flex flex-col items-center justify-center gap-6
-        transition-opacity duration-400
-        ${fadeOut ? "opacity-0" : "opacity-100"}
-      `}
+    fixed inset-0 z-50
+    bg-background
+    flex flex-col items-center justify-center gap-6
+    transition-opacity duration-400
+    ${fadeOut ? "opacity-0" : "opacity-100"}
+  `}
     >
       <h1
-        className="
-          text-3xl md:text-5xl font-bold font-mono
-          text-transparent bg-clip-text
-          bg-linear-to-r from-blue-400 via-cyan-500 to-pink-600
-          bg-no-repeat
-        "
+        className={` text-3xl md:text-5xl font-bold font-mono text-center
+      text-transparent bg-clip-text
+      bg-no-repeat bg-linear-to-r from-primary via-cyan-500 to-primary bg-foreground
+      }`}
         style={{
           backgroundSize:
             phase === "filling" || fadeOut ? `${progress}% 100%` : "0% 100%",
@@ -87,13 +86,18 @@ export default function LoadingScreen({ onComplete }) {
         {text}
       </h1>
 
-      <span className="text-sm text-blue-500 tracking-wide">
+      <span className="text-sm text-primary tracking-wide">
         {Math.floor(progress)}%
       </span>
 
-      <div className="w-64 h-0.5 bg-gray-800 rounded overflow-hidden">
+      <div className="w-64 h-0.5 bg-foreground/30 rounded overflow-hidden">
         <div
-          className="h-full bg-blue-500 shadow-[0_0_15px_#3b82f6]"
+          className="
+        h-full
+        bg-primary
+        shadow-[0_0_12px_#0ea5e9]
+        dark:shadow-[0_0_12px_#38bdf8]
+      "
           style={{ width: `${progress}%` }}
         />
       </div>

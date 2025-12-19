@@ -2,15 +2,48 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
       rel="stylesheet"
     />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="alfred.code is a modern personal portfolio website built with React and TailwindCSS, bundled using Vite for fast development and optimized production builds. It supports light/dark themes, responsive layouts, animated visuals, and a functional contact form using EmailJS without a backend."
+    />
+    <meta property="og:site_name" content="Alfred Faith" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Alfred Faith - Full-Stack Web Developer"
+    />
     <title>alfred.code</title>
+    <script>
+      (function () {
+        try {
+          const stored = localStorage.getItem("theme");
+          const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+          ).matches;
+
+          const shouldUseDark =
+            stored === "dark" ||
+            (stored === "system" && prefersDark) ||
+            (!stored && prefersDark);
+
+          if (shouldUseDark) {
+            document.documentElement.classList.add("dark");
+          }
+        } catch (_) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
