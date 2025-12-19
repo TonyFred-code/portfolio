@@ -20,7 +20,7 @@ export default function Home() {
           </h1>
 
           <p className="text-secondary text-xl mb-8 max-w-lg mx-auto">
-            I build full-stack web applications that <em>just works</em> —
+            I build full-stack web applications that <em>just work</em> —
             thoughtful design, solid architecture, and smooth user experiences.
           </p>
 
