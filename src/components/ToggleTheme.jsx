@@ -1,6 +1,7 @@
 import { Laptop, Moon, Sun } from "lucide-react";
 
 const options = [
+  { value: "system", Icon: Laptop, label: "System" },
   { value: "light", Icon: Sun, label: "Light" },
   { value: "dark", Icon: Moon, label: "Dark" },
 ];

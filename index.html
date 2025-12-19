@@ -23,7 +23,12 @@
             "(prefers-color-scheme: dark)"
           ).matches;
 
-          if (stored === "dark" || (!stored && prefersDark)) {
+          const shouldUseDark =
+            stored === "dark" ||
+            (stored === "system" && prefersDark) ||
+            (!stored && prefersDark);
+
+          if (shouldUseDark) {
             document.documentElement.classList.add("dark");
           }
         } catch (_) {}
