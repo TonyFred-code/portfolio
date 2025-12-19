@@ -78,8 +78,7 @@ export default function LoadingScreen({ onComplete }) {
       text-3xl md:text-5xl font-bold font-mono
       text-transparent bg-clip-text
       bg-linear-to-r
-      from-indigo-500 via-sky-500 to-fuchsia-500
-      dark:from-indigo-400 dark:via-sky-400 dark:to-fuchsia-400
+      from-primary via-cyan-500 to-primary
       bg-no-repeat
     "
         style={{
@@ -90,15 +89,15 @@ export default function LoadingScreen({ onComplete }) {
         {text}
       </h1>
 
-      <span className="text-sm text-sky-600 dark:text-sky-400 tracking-wide">
+      <span className="text-sm text-primary tracking-wide">
         {Math.floor(progress)}%
       </span>
 
-      <div className="w-64 h-0.5 bg-gray-400 dark:bg-gray-700 rounded overflow-hidden">
+      <div className="w-64 h-0.5 bg-foreground/30 rounded overflow-hidden">
         <div
           className="
         h-full
-        bg-sky-500 dark:bg-sky-400
+        bg-primary
         shadow-[0_0_12px_#0ea5e9]
         dark:shadow-[0_0_12px_#38bdf8]
       "
