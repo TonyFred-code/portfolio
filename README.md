@@ -26,6 +26,8 @@ A fast, responsive, and customizable personal portfolio built with React, Vite, 
 - [Deployment](#deployment)
 - [Performance & Accessibility](#performance--accessibility)
 - [License](#license)
+- [References](#references)
+- [Attribution](#attribution)
 
 ---
 
@@ -198,3 +200,12 @@ This project is licensed under the MIT License. See the [LICENSE](./LICENSE) fil
 - [EmailJS](https://www.emailjs.com)
 
 - [Vercel](https://vercel.com)
+
+## Attribution
+
+The favicon used in this project was generated using the following graphics from Twitter Twemoji:
+
+- Graphics Title: 1f47e.svg
+- [Graphics Author](https://github.com/twitter/twemoji): Copyright 2020 Twitter, Inc and other contributors
+- [Graphics Source](https://github.com/twitter/twemoji/blob/master/assets/svg/1f47e.svg)
+- [Graphics License](https://creativecommons.org/licenses/by/4.0/): CC-BY 4.0
