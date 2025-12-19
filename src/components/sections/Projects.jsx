@@ -5,7 +5,7 @@ export default function Projects() {
   const projects = [
     {
       projectName: "Emoji Flipper",
-      projectDescription: "A fun emoji flipping game build with React and vite",
+      projectDescription: "A fun emoji flipping game built with React and Vite",
       techUsed: ["React", "Vite"],
       demoLink: "https://top-project-memory-card.vercel.app/",
       sourceCodeLink: "https://github.com/TonyFred-code/project-memory-card",
