@@ -76,7 +76,7 @@ export default function Contact() {
             />
             <div className="relative">
               <label htmlFor="name" className="sr-only">
-                Name:{" "}
+                Name:
               </label>
               <input
                 type="text"
@@ -95,7 +95,7 @@ export default function Contact() {
 
             <div className="relative">
               <label htmlFor="email" className="sr-only">
-                Email Address:{" "}
+                Email Address:
               </label>
               <input
                 type="email"
@@ -113,6 +113,9 @@ export default function Contact() {
             </div>
 
             <div className="relative">
+              <label htmlFor="message" className="sr-only">
+                Message:
+              </label>
               <textarea
                 id="message"
                 name="message"
