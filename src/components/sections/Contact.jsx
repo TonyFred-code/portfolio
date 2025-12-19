@@ -19,30 +19,37 @@ export default function Contact() {
     e.preventDefault();
     setStatus(FORM_STATUS.SENDING);
 
-    emailjs
-      .sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        e.target,
-        {
-          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_API_KEY,
-        }
-      )
+    const sendPromise = emailjs.sendForm(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      e.target,
+      {
+        publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_API_KEY,
+      }
+    );
+
+    const timeoutPromise = new Promise((_, reject) =>
+      setTimeout(() => reject(new Error("Request timed out")), 2000)
+    );
+
+    Promise.race([sendPromise, timeoutPromise])
       .then(() => {
         setFormData({ name: "", email: "", message: "" });
         toast.success("Message sent successfully!", { closeOnClick: true });
         setStatus(FORM_STATUS.SENT);
       })
       .catch((e) => {
-        const errorMsg = e?.message
-          ? `Error: ${e.message}`
-          : "An unexpected error occurred.";
+        const isTimeout = e.message === "Request timed out";
+
         toast.error(
-          `${errorMsg}.\nPlease check your internet connection and try again.`,
-          {
-            closeOnClick: true,
-          }
+          isTimeout
+            ? "Request took too long. Please check your connection and try again."
+            : e?.message
+            ? `Error: ${e.message}`
+            : "An unexpected error occurred.",
+          { closeOnClick: true }
         );
+
         setStatus(FORM_STATUS.FAILED);
       })
       .finally(() => {
