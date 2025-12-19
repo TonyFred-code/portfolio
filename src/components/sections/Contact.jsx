@@ -21,11 +21,11 @@ export default function Contact() {
 
     emailjs
       .sendForm(
-        import.meta.env.VITE_SERVICE_ID,
-        import.meta.env.VITE_TEMPLATE_ID,
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         e.target,
         {
-          publicKey: import.meta.env.VITE_PUBLIC_API_KEY,
+          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_API_KEY,
         }
       )
       .then(() => {
