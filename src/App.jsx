@@ -9,12 +9,21 @@ import Contact from "./components/sections/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import { ToastContainer } from "react-toastify";
 
+function defaultTheme() {
+  const stored = localStorage.getItem("theme");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  if (stored === "dark" || (!stored && prefersDark)) {
+    return "dark";
+  }
+
+  return "light";
+}
+
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [theme, setTheme] = useState(
-    () => localStorage.getItem("theme") || "dark"
-  );
+  const [theme, setTheme] = useState(defaultTheme());
 
   // Apply theme to root
   useEffect(() => {
