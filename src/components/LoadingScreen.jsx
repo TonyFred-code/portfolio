@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { bool } from "prop-types";
+import { func } from "prop-types";
 import randomInteger from "../helpers/randomInteger.js";
 
 export default function LoadingScreen({ onComplete }) {
@@ -108,5 +108,5 @@ export default function LoadingScreen({ onComplete }) {
 }
 
 LoadingScreen.propTypes = {
-  onComplete: bool,
+  onComplete: func.isRequired,
 };
