@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { bool } from "prop-types";
 
 export default function LoadingScreen({ onComplete }) {
   const fullText = "<Hello World />";
@@ -104,3 +105,7 @@ export default function LoadingScreen({ onComplete }) {
     </div>
   );
 }
+
+LoadingScreen.propTypes = {
+  onComplete: bool,
+};
