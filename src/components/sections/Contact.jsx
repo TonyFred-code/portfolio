@@ -45,8 +45,8 @@ export default function Contact() {
           isTimeout
             ? "Request took too long. Please check your connection and try again."
             : e?.message
-            ? `Error: ${e.message}`
-            : "An unexpected error occurred.",
+              ? `Error: ${e.message}`
+              : "An unexpected error occurred.",
           { closeOnClick: true }
         );
 
