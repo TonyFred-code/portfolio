@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { bool } from "prop-types";
+import randomInteger from "../helpers/randomInteger.js";
 
 export default function LoadingScreen({ onComplete }) {
   const fullText = "<Hello World />";
@@ -17,7 +18,7 @@ export default function LoadingScreen({ onComplete }) {
     const typingSpeed = 130; // ms per char
 
     // filling config
-    const fillDuration = Math.floor(Math.random() * 301) + 300;
+    const fillDuration = randomInteger(300, 600);
 
     function tick(now) {
       const elapsed = now - start;
