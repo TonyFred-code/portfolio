@@ -8,6 +8,7 @@ import Projects from "./components/sections/Projects.jsx";
 import Contact from "./components/sections/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import { ToastContainer } from "react-toastify";
+import useProjects from "./hooks/useProjects.jsx";
 
 function getSystemTheme() {
   return window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -27,6 +28,7 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState(defaultTheme());
+  const { loading, error } = useProjects();
 
   useEffect(() => {
     const root = document.documentElement;
@@ -50,15 +52,20 @@ function App() {
     return () => media.removeEventListener("change", handleChange);
   }, [theme]);
 
+  const shouldShowLoader = loading || !isLoaded;
   const toastTheme = resolveTheme(theme);
+
+  if (error) return <div>An error occurred: {error}</div>;
 
   return (
     <>
-      {!isLoaded && <LoadingScreen onComplete={() => setIsLoaded(true)} />}
+      {shouldShowLoader && (
+        <LoadingScreen onComplete={() => setIsLoaded(true)} />
+      )}
 
       <div
         className={`min-h-screen transition-opacity duration-700
-          ${isLoaded ? "opacity-100" : "opacity-0"}
+          ${!shouldShowLoader ? "opacity-100" : "opacity-0"}
           bg-background text-foreground
         `}
       >
