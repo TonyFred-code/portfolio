@@ -2,13 +2,11 @@ import { useState, useEffect } from "react";
 import LoadingScreen from "./components/LoadingScreen.jsx";
 import NavBar from "./components/NavBar.jsx";
 import MobileMenu from "./components/MobileMenu.jsx";
-import Home from "./components/sections/Home.jsx";
-import About from "./components/sections/About.jsx";
-import Projects from "./components/sections/Projects.jsx";
-import Contact from "./components/sections/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import { ToastContainer } from "react-toastify";
 import useProjects from "./hooks/useProjects.jsx";
+import { Outlet } from "react-router-dom";
+import ScrollToHashElement from "./components/ScrollToHashElement.jsx";
 
 function getSystemTheme() {
   return window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -59,6 +57,7 @@ function App() {
 
   return (
     <>
+      <ScrollToHashElement behavior="smooth" />
       {shouldShowLoader && (
         <LoadingScreen onComplete={() => setIsLoaded(true)} />
       )}
@@ -71,10 +70,7 @@ function App() {
       >
         <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-        <Home />
-        <About />
-        <Projects />
-        <Contact />
+        <Outlet />
         <Footer setTheme={setTheme} currentTheme={theme} />
       </div>
 

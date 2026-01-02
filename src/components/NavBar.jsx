@@ -1,6 +1,31 @@
+import { bool, func } from "prop-types";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function NavBar({ menuOpen, setMenuOpen }) {
+  const pageLinks = [
+    {
+      name: "home",
+      path: "#home",
+    },
+    {
+      name: "about",
+      path: "#about",
+    },
+    {
+      name: "projects",
+      path: "#projects",
+    },
+    {
+      name: "contact",
+      path: "#contact",
+    },
+    {
+      name: "showcase",
+      path: "/showcase",
+    },
+  ];
+
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
   }, [menuOpen]);
@@ -39,19 +64,19 @@ export default function NavBar({ menuOpen, setMenuOpen }) {
           </div>
 
           <div className="hidden md:flex items-center space-x-8">
-            {["Home", "About", "Projects", "Contact"].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+            {pageLinks.map((item) => (
+              <Link
+                key={item.name}
+                to={`${item.path}`}
                 className="
               text-foreground
               hover:text-foreground/70
-              
+              capitalize
               transition-colors
             "
               >
-                {item}
-              </a>
+                {item.name}
+              </Link>
             ))}
           </div>
         </div>
@@ -59,3 +84,8 @@ export default function NavBar({ menuOpen, setMenuOpen }) {
     </nav>
   );
 }
+
+NavBar.propTypes = {
+  menuOpen: bool,
+  setMenuOpen: func,
+};
