@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import LoadingScreen from "./components/LoadingScreen.jsx";
 import NavBar from "./components/NavBar.jsx";
 import MobileMenu from "./components/MobileMenu.jsx";
@@ -15,29 +15,6 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { theme } = useTheme();
   const { loading, error } = useProjects();
-
-  useEffect(() => {
-    const root = document.documentElement;
-    const resolvedTheme = resolveTheme(theme);
-
-    root.classList.toggle("dark", resolvedTheme === "dark");
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
-  /* React to system changes only when in system mode */
-  useEffect(() => {
-    if (theme !== "system") return;
-
-    const media = window.matchMedia("(prefers-color-scheme: dark)");
-
-    const handleChange = () => {
-      document.documentElement.classList.toggle("dark", media.matches);
-    };
-
-    media.addEventListener("change", handleChange);
-    return () => media.removeEventListener("change", handleChange);
-  }, [theme]);
-
   const shouldShowLoader = loading || !isLoaded;
   const toastTheme = resolveTheme(theme);
 
