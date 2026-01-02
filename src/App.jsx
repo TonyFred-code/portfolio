@@ -7,25 +7,13 @@ import { ToastContainer } from "react-toastify";
 import useProjects from "./hooks/useProjects.jsx";
 import { Outlet } from "react-router-dom";
 import ScrollToHashElement from "./components/ScrollToHashElement.jsx";
-
-function getSystemTheme() {
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
-}
-
-function resolveTheme(theme) {
-  return theme === "system" ? getSystemTheme() : theme;
-}
-
-function defaultTheme() {
-  return localStorage.getItem("theme") || "system";
-}
+import { resolveTheme } from "./helpers/themeUtils.js";
+import useTheme from "./hooks/useTheme.jsx";
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [theme, setTheme] = useState(defaultTheme());
+  const { theme } = useTheme();
   const { loading, error } = useProjects();
 
   useEffect(() => {
@@ -71,7 +59,7 @@ function App() {
         <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <Outlet />
-        <Footer setTheme={setTheme} currentTheme={theme} />
+        <Footer />
       </div>
 
       <ToastContainer theme={toastTheme} />
