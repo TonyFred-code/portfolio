@@ -1,5 +1,6 @@
 import { CheckIcon, Loader, RotateCcw, Send } from "lucide-react";
 import FORM_STATUS from "../constants/form-status.js";
+import { number, oneOf, string } from "prop-types";
 
 function Word({ text, startIndex = 0 }) {
   return (
@@ -16,6 +17,11 @@ function Word({ text, startIndex = 0 }) {
     </span>
   );
 }
+
+Word.propTypes = {
+  text: string,
+  startIndex: number,
+};
 
 export default function SendButton({ status }) {
   return (
@@ -62,3 +68,12 @@ export default function SendButton({ status }) {
     </button>
   );
 }
+
+SendButton.propTypes = {
+  status: oneOf([
+    FORM_STATUS.FAILED,
+    FORM_STATUS.IDLE,
+    FORM_STATUS.SENDING,
+    FORM_STATUS.SENT,
+  ]).isRequired,
+};
