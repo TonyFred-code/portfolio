@@ -6,19 +6,19 @@ export default function NavBar({ menuOpen, setMenuOpen }) {
   const pageLinks = [
     {
       name: "home",
-      path: "#home",
+      path: "/#home",
     },
     {
       name: "about",
-      path: "#about",
+      path: "/#about",
     },
     {
       name: "projects",
-      path: "#projects",
+      path: "/#projects",
     },
     {
       name: "contact",
-      path: "#contact",
+      path: "/#contact",
     },
     {
       name: "showcase",
@@ -67,13 +67,8 @@ export default function NavBar({ menuOpen, setMenuOpen }) {
             {pageLinks.map((item) => (
               <Link
                 key={item.name}
-                to={`${item.path}`}
-                className="
-              text-foreground
-              hover:text-foreground/70
-              capitalize
-              transition-colors
-            "
+                to={item.path}
+                className="text-foreground hover:text-foreground/70 capitalize transition-colors"
               >
                 {item.name}
               </Link>
