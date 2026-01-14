@@ -1,4 +1,5 @@
 import { Laptop, Moon, Sun } from "lucide-react";
+import { func, string } from "prop-types";
 
 const options = [
   { value: "system", Icon: Laptop, label: "System" },
@@ -29,7 +30,7 @@ export default function ThemeToggle({ theme, setTheme }) {
             aria-checked={active}
             onClick={() => setTheme(value)}
             className={`
-              flex items-center gap-1 px-3 py-1.5 rounded-full text-sm
+              flex items-center gap-1 px-3 py-1.5 rounded-full text-sm cursor-pointer hover:bg-background/90
               transition-colors text-foreground
               ${active && "bg-background shadow-sm"}
             `}
@@ -42,3 +43,8 @@ export default function ThemeToggle({ theme, setTheme }) {
     </div>
   );
 }
+
+ThemeToggle.propTypes = {
+  theme: string,
+  setTheme: func,
+};
