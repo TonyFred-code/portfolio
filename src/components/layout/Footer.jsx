@@ -1,5 +1,5 @@
-import useTheme from "../hooks/useTheme.jsx";
-import ToggleTheme from "./ToggleTheme.jsx";
+import useTheme from "../../hooks/useTheme.jsx";
+import ToggleTheme from "../ToggleTheme.jsx";
 
 export default function Footer() {
   const { theme, setTheme } = useTheme();

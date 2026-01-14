@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Footer from "../components/Footer.jsx";
+import Footer from "../components/layout/Footer.jsx";
 
 export default function Error() {
   return (

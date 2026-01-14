@@ -1,4 +1,4 @@
-import RevealOnScroll from "../RevealOnScroll.jsx";
+import RevealOnScroll from "./helpers/RevealOnScroll.jsx";
 
 export default function Home() {
   return (

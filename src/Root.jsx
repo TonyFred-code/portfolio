@@ -1,14 +1,14 @@
 import { useState } from "react";
 import LoadingScreen from "./components/LoadingScreen.jsx";
-import NavBar from "./components/NavBar.jsx";
-import MobileMenu from "./components/MobileMenu.jsx";
-import Footer from "./components/Footer.jsx";
+import NavBar from "./components/layout/NavBar.jsx";
+import MobileMenu from "./components/layout/MobileMenu.jsx";
+import Footer from "./components/layout/Footer.jsx";
 import { ToastContainer } from "react-toastify";
 import { Outlet } from "react-router-dom";
 import { resolveTheme } from "./helpers/themeUtils.js";
 import useTheme from "./hooks/useTheme.jsx";
-import ScrollToHashElement from "./components/ScrollToHashElement.jsx";
-import NavigationBar from "./components/TopLoader.jsx";
+import ScrollToHashElement from "./components/helpers/ScrollToHashElement.jsx";
+import NavigationBar from "./components/helpers/TopLoader.jsx";
 
 function Root() {
   const [menuOpen, setMenuOpen] = useState(false);

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import RevealOnScroll from "../RevealOnScroll.jsx";
+import RevealOnScroll from "../helpers/RevealOnScroll.jsx";
 import emailjs from "@emailjs/browser";
 import { format } from "date-fns";
 import SendButton from "../SendButton.jsx";
