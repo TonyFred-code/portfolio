@@ -5,28 +5,28 @@ import "nprogress/nprogress.css";
 
 NProgress.configure({
   showSpinner: false,
-  trickleSpeed: 200,
-  minimum: 0.08,
 });
 
 export default function TopLoader() {
   const navigation = useNavigation();
   const location = useLocation();
-  const prevPathname = useRef(location.pathname);
+  const prevLocation = useRef(location.pathname);
+  const isLoadingRef = useRef(false);
 
   useEffect(() => {
-    const pathnameChanged = prevPathname.current !== location.pathname;
-
-    if (pathnameChanged && navigation.state === "loading") {
-      NProgress.start();
+    if (navigation.state === "loading") {
+      if (navigation.location?.pathname !== prevLocation.current) {
+        NProgress.start();
+        isLoadingRef.current = true;
+      }
+    } else if (navigation.state === "idle") {
+      if (isLoadingRef.current) {
+        NProgress.done();
+        isLoadingRef.current = false;
+      }
+      prevLocation.current = location.pathname;
     }
-
-    if (navigation.state === "idle") {
-      NProgress.done();
-    }
-
-    prevPathname.current = location.pathname;
-  }, [navigation.state, location.pathname]);
+  }, [navigation.state, location.pathname, navigation.location]);
 
   return null;
 }
