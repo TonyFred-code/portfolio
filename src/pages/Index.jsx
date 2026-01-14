@@ -1,7 +1,7 @@
-import About from "../components/sections/About.jsx";
-import Contact from "../components/sections/Contact.jsx";
+import About from "../components/About.jsx";
+import Contact from "../components/Contact.jsx";
 import Home from "../components/Home.jsx";
-import Projects from "../components/sections/Projects.jsx";
+import Projects from "../components/Projects.jsx";
 
 export default function Index() {
   return (

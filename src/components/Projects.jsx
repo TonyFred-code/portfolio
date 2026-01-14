@@ -1,5 +1,5 @@
 import { ExternalLink } from "lucide-react";
-import RevealOnScroll from "../helpers/RevealOnScroll.jsx";
+import RevealOnScroll from "./helpers/RevealOnScroll.jsx";
 
 export default function Projects() {
   const projects = [

@@ -1,10 +1,10 @@
 import { useState } from "react";
-import RevealOnScroll from "../helpers/RevealOnScroll.jsx";
-import emailjs from "@emailjs/browser";
 import { format } from "date-fns";
-import SendButton from "../SendButton.jsx";
+import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
-import FORM_STATUS from "../../constants/form-status.js";
+import RevealOnScroll from "./helpers/RevealOnScroll.jsx";
+import FORM_STATUS from "../constants/form-status.js";
+import SendButton from "../components/SendButton.jsx";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
