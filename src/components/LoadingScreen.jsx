@@ -1,21 +1,18 @@
 import { useEffect, useState } from "react";
 import { func } from "prop-types";
 import randomInteger from "../helpers/randomInteger.js";
+import TextType from "./helpers/TextType.jsx";
 
 export default function LoadingScreen({ onComplete }) {
-  const fullText = "<Hello World />";
-
-  const [text, setText] = useState("");
   const [progress, setProgress] = useState(0);
   const [phase, setPhase] = useState("typing"); // typing | filling | done
   const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
+    if (phase !== "filling") return;
+
     let rafId;
     let start = performance.now();
-
-    // typing config
-    const typingSpeed = 130; // ms per char
 
     // filling config
     const fillDuration = randomInteger(300, 600);
@@ -23,26 +20,12 @@ export default function LoadingScreen({ onComplete }) {
     function tick(now) {
       const elapsed = now - start;
 
-      if (phase === "typing") {
-        const chars = Math.floor(elapsed / typingSpeed);
-        const clamped = Math.min(chars, fullText.length);
+      const pct = Math.min((elapsed / fillDuration) * 100, 100);
+      setProgress(pct);
 
-        setText(fullText.slice(0, clamped));
-
-        if (clamped === fullText.length) {
-          setTimeout(() => {
-            setPhase("filling");
-            start = now; // reset clock for filling
-          }, 100);
-        }
-      } else if (phase === "filling") {
-        const pct = Math.min((elapsed / fillDuration) * 100, 100);
-        setProgress(pct);
-
-        if (pct === 100) {
-          setTimeout(() => setFadeOut(true), 300);
-          return; // stop loop
-        }
+      if (pct === 100) {
+        setTimeout(() => setFadeOut(true), 300);
+        return; // stop loop
       }
 
       rafId = requestAnimationFrame(tick);
@@ -51,7 +34,7 @@ export default function LoadingScreen({ onComplete }) {
     rafId = requestAnimationFrame(tick);
 
     return () => cancelAnimationFrame(rafId);
-  }, [phase, fullText]);
+  }, [phase]);
 
   /* ---------------- Exit phase ---------------- */
   useEffect(() => {
@@ -76,19 +59,27 @@ export default function LoadingScreen({ onComplete }) {
   `}
     >
       <h1
-        className={` text-3xl md:text-5xl font-bold font-mono text-center
+        className="text-3xl md:text-5xl font-bold font-mono text-center
       text-transparent bg-clip-text
-      bg-no-repeat bg-linear-to-r from-primary via-cyan-500 to-primary bg-foreground
-      }`}
+      bg-no-repeat bg-linear-to-r from-primary via-cyan-500 to-primary bg-foreground"
         style={{
           backgroundSize:
             phase === "filling" || fadeOut ? `${progress}% 100%` : "0% 100%",
         }}
       >
-        {text}
+        <TextType
+          text={"<Hello World />"}
+          loop={false}
+          cursorCharacter="_"
+          cursorClassName={`${phase === "typing" ? "text-foreground" : "text-primary"}`}
+          typingSpeed={75}
+          onSentenceComplete={() => setPhase("filling")}
+        />
       </h1>
 
-      <span className="text-sm text-primary tracking-wide">
+      <span
+        className={`${phase === "filling" ? "text-primary" : "text-foreground"} text-sm  tracking-wide`}
+      >
         {Math.floor(progress)}%
       </span>
 

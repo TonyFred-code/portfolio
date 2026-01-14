@@ -26,6 +26,7 @@
     "@emailjs/browser": "^4.4.1",
     "@tailwindcss/vite": "^4.1.18",
     "date-fns": "^4.1.0",
+    "gsap": "^3.14.2",
     "lucide-react": "^0.562.0",
     "nprogress": "^0.2.0",
     "prop-types": "^15.8.1",
