@@ -1,5 +1,6 @@
 import { string } from "prop-types";
 import { useLayoutEffect, useState, useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function ScrollToHashElement({
   behavior = "auto",
@@ -7,20 +8,23 @@ export default function ScrollToHashElement({
   inline = "nearest",
   block = "start",
 }) {
+  const location = useLocation();
   const [hash, setHash] = useState(window.location.hash);
   const [count, setCount] = useState(0);
   const originalListeners = useRef({});
 
-  // We need to know if this is the first run. If it is, we can do an instant jump, no scrolling.
   const [firstRun, setFirstRun] = useState(true);
   useEffect(() => setFirstRun(false), []);
+
+  // Update hash when React Router location changes
+  useEffect(() => {
+    setHash(location.hash || window.location.hash);
+    setCount((count) => count + 1);
+  }, [location]);
 
   useEffect(() => {
     const handleLocationChange = () => {
       setHash(window.location.hash);
-
-      // We increment count just so the layout effect will run if the hash is the same.
-      // Otherwise the user might click a hashlink a second time and it won't go anywhere.
       setCount((count) => count + 1);
     };
 
@@ -50,7 +54,6 @@ export default function ScrollToHashElement({
       window.addEventListener("locationchange", handleLocationChange);
     };
 
-    // Cleanup the event listeners on component unmount
     const removeWindowListeners = () => {
       window.history.pushState = originalListeners.current.pushState;
       window.history.replaceState = originalListeners.current.replaceState;
