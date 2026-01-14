@@ -1,14 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "../App.jsx";
+import Root from "../Root.jsx";
 import projectsLoader from "../loaders/projectsLoader.js";
 import Error from "../pages/ErrorPage.jsx";
-import Index from "../pages/Home.jsx";
+import Index from "../pages/Index.jsx";
 import Showcase from "../pages/Showcase.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Root />,
     errorElement: <Error />,
     loader: projectsLoader,
     id: "root",

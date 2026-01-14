@@ -10,7 +10,7 @@ import useTheme from "./hooks/useTheme.jsx";
 import ScrollToHashElement from "./components/ScrollToHashElement.jsx";
 import NavigationBar from "./components/TopLoader.jsx";
 
-function App() {
+function Root() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { theme } = useTheme();
   const toastTheme = resolveTheme(theme);
@@ -45,4 +45,4 @@ function App() {
   );
 }
 
-export default App;
+export default Root;
