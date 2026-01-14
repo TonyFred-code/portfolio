@@ -1,34 +1,8 @@
 import { ExternalLink } from "lucide-react";
 import RevealOnScroll from "./helpers/RevealOnScroll.jsx";
+import { array } from "prop-types";
 
-export default function Projects() {
-  const projects = [
-    {
-      projectName: "Emoji Flipper",
-      projectDescription: "A fun emoji flipping game built with React and Vite",
-      techUsed: ["React", "Vite"],
-      demoLink: "https://top-project-memory-card.vercel.app/",
-      sourceCodeLink: "https://github.com/TonyFred-code/project-memory-card",
-    },
-    {
-      projectName: "Intelligent CV",
-      projectDescription:
-        "This is a React-based application that allows users to input their information and generate a CV/résumé.",
-      techUsed: ["React", "Vite"],
-      demoLink: "https://intelligent-cv-generator.vercel.app/",
-      sourceCodeLink: "https://github.com/TonyFred-code/project-cv-generator",
-    },
-
-    {
-      projectName: "Fruit Era",
-      projectDescription:
-        "A demo e-commerce shopping cart built with React and Vite, featuring cart state management and component testing with React Testing Library.",
-      techUsed: ["React", "RTL", "Vite"],
-      demoLink: "https://project-shopping-cart-gray.vercel.app/",
-      sourceCodeLink: "https://github.com/TonyFred-code/project-shopping-cart",
-    },
-  ];
-
+export default function Projects({ projects }) {
   return (
     <section
       id="projects"
@@ -111,3 +85,7 @@ export default function Projects() {
     </section>
   );
 }
+
+Projects.propTypes = {
+  projects: array.isRequired,
+};
