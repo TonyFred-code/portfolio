@@ -16,7 +16,7 @@ export default function Home() {
       from-primary via-cyan-500 to-primary
     "
           >
-            Hi, I'm Alfred Faith
+            Hi, I&apos;m Alfred Faith
           </h1>
 
           <p className="text-secondary text-xl mb-8 max-w-lg mx-auto">
