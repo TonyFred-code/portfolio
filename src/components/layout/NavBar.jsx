@@ -42,8 +42,8 @@ export default function NavBar({ menuOpen, setMenuOpen }) {
     >
       <div className="max-w-5xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <a
-            href="#home"
+          <Link
+            to="/#home"
             className="
           font-mono text-xl font-bold
           text-foreground
@@ -51,7 +51,7 @@ export default function NavBar({ menuOpen, setMenuOpen }) {
           >
             alfred
             <span className="text-sky-600 dark:text-blue-500">.code</span>
-          </a>
+          </Link>
 
           <div
             className="
