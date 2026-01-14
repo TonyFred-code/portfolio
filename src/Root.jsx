@@ -8,7 +8,7 @@ import { Outlet } from "react-router-dom";
 import { resolveTheme } from "./helpers/themeUtils.js";
 import useTheme from "./hooks/useTheme.jsx";
 import ScrollToHashElement from "./components/helpers/ScrollToHashElement.jsx";
-import NavigationBar from "./components/helpers/TopLoader.jsx";
+import TopLoader from "./components/helpers/TopLoader.jsx";
 
 function Root() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -31,7 +31,7 @@ function Root() {
 
   return (
     <>
-      <NavigationBar />
+      <TopLoader />
       <ScrollToHashElement behavior="smooth" />
       <div className={`min-h-screen bg-background text-foreground`}>
         <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
