@@ -1,3 +1,4 @@
+import { element } from "prop-types";
 import { useEffect, useRef } from "react";
 
 export default function RevealOnScroll({ children }) {
@@ -24,3 +25,7 @@ export default function RevealOnScroll({ children }) {
     </div>
   );
 }
+
+RevealOnScroll.propTypes = {
+  children: element.isRequired,
+};
