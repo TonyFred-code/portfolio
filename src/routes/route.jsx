@@ -25,6 +25,11 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     loader: projectsLoader,
     id: "root",
+    hydrateFallbackElement: (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="size-6 rounded-full bg-foreground animate-ping"></div>
+      </div>
+    ),
     children: [
       {
         index: true,
