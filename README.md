@@ -51,20 +51,16 @@ This project is a modern portfolio website built with React and TailwindCSS, bun
 ## Key Features
 
 - **Theme Toggle**
-
   - Light/Dark mode with persisted preference (localStorage)
 
 - **Responsive UI**
-
   - Mobile-first layout with adaptive navigation
   - Glassmorphism effects for menus and cards
 
 - **Animated Backgrounds**
-
   - Subtle motion for visual depth without performance cost
 
 - **Projects Showcase**
-
   - Project cards with screenshots, tech stack tags, and external links
 
 - **Contact Section**

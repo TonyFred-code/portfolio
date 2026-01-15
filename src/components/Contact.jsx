@@ -1,10 +1,10 @@
 import { useState } from "react";
-import RevealOnScroll from "../RevealOnScroll.jsx";
-import emailjs from "@emailjs/browser";
 import { format } from "date-fns";
-import SendButton from "../SendButton.jsx";
+import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
-import FORM_STATUS from "../../constants/form-status.js";
+import RevealOnScroll from "./helpers/RevealOnScroll.jsx";
+import FORM_STATUS from "../constants/form-status.js";
+import SendButton from "../components/SendButton.jsx";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -45,8 +45,8 @@ export default function Contact() {
           isTimeout
             ? "Request took too long. Please check your connection and try again."
             : e?.message
-            ? `Error: ${e.message}`
-            : "An unexpected error occurred.",
+              ? `Error: ${e.message}`
+              : "An unexpected error occurred.",
           { closeOnClick: true }
         );
 
@@ -82,6 +82,7 @@ export default function Contact() {
                 type="text"
                 id="name"
                 name="name"
+                autoComplete="name"
                 value={formData.name}
                 required
                 className="w-full bg-card/80 border border-border rounded px-4 py-3 text-foreground transition focus:outline-none focus:border-primary focus:bg-blue-500/5 placeholder:text-secondary/50 disabled:opacity-70 disabled:cursor-not-allowed"
@@ -101,6 +102,7 @@ export default function Contact() {
                 type="email"
                 id="email"
                 name="email"
+                autoComplete="email"
                 required
                 className="w-full bg-card/80 border border-border rounded px-4 py-3 text-foreground transition focus:outline-none focus:border-primary focus:bg-blue-500/5 placeholder:text-secondary/50 disabled:opacity-70 disabled:cursor-not-allowed"
                 placeholder="example@gmail.com"

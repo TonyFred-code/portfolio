@@ -1,9 +1,12 @@
-import ToggleTheme from "./ToggleTheme.jsx";
+import useTheme from "../../hooks/useTheme.jsx";
+import ToggleTheme from "../ToggleTheme.jsx";
 
-export default function Footer({ currentTheme, setTheme }) {
+export default function Footer() {
+  const { theme, setTheme } = useTheme();
+
   return (
     <footer className="text-xs text-secondary flex flex-col items-center justify-around md:flex-row py-3 gap-5">
-      <ToggleTheme theme={currentTheme} setTheme={setTheme} />
+      <ToggleTheme theme={theme} setTheme={setTheme} />
 
       <div className="flex items-center gap-3">
         <span>© {new Date().getFullYear()} Alfred Faith</span>

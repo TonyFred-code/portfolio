@@ -1,0 +1,87 @@
+[
+  {
+    "projectName": "Emoji Flipper",
+    "projectDescription": "A fun emoji flipping game built with React and Vite",
+    "techUsed": ["React", "Vite"],
+    "demoLink": "https://top-project-memory-card.vercel.app/",
+    "sourceCodeLink": "https://github.com/TonyFred-code/project-memory-card",
+    "featured": false,
+    "type": "learning_project",
+    "source": "Odin Project"
+  },
+  {
+    "projectName": "Intelligent CV",
+    "projectDescription": "This is a React-based application that allows users to input their information and generate a CV/résumé.",
+    "techUsed": ["React", "Vite"],
+    "demoLink": "https://intelligent-cv-generator.vercel.app/",
+    "sourceCodeLink": "https://github.com/TonyFred-code/project-cv-generator",
+    "featured": true,
+    "type": "learning_project",
+    "source": "Odin Project"
+  },
+
+  {
+    "projectName": "Themed Calculator",
+    "projectDescription": "A responsive calculator application built to match a provided design, supporting basic arithmetic operations and theme switching with persisted user preferences.",
+    "techUsed": ["TailwindCSS", "Vite", "React"],
+    "demoLink": "https://calculator-app-black-rho.vercel.app/",
+    "sourceCodeLink": "https://github.com/TonyFred-code/calculator-app",
+    "featured": false,
+    "type": "challenge_solution",
+    "source": "Odin Project"
+  },
+
+  {
+    "projectName": "Typing Speed Test",
+    "projectDescription": "A typing speed test application that measures WPM, accuracy, and consistency across different modes and difficulty levels, with persistent personal best tracking.",
+    "techUsed": ["React", "Vite", "TailwindCSS", "GSAP"],
+    "demoLink": "https://typing-speed-test-bice.vercel.app/",
+    "sourceCodeLink": "https://github.com/TonyFred-code/typing-speed-test",
+    "featured": true,
+    "type": "challenge_project",
+    "source": "Frontend Mentor Hackathon"
+  },
+
+  {
+    "projectName": "Age Calculator App",
+    "projectDescription": "An interactive age calculator that computes exact age in years, months, and days from a valid date input, with robust validation and animated result transitions.",
+    "techUsed": ["React", "Vite", "Tailwind CSS", "Framer Motion"],
+    "demoLink": "https://age-calculator-app-six-wine.vercel.app/",
+    "sourceCodeLink": "https://github.com/TonyFred-code/age-calculator-app/",
+    "featured": false,
+    "type": "challenge_project",
+    "source": "Frontend Mentor"
+  },
+
+  {
+    "projectName": "Battleship",
+    "projectDescription": "A JavaScript implementation of the classic Battleship game built with Test Driven Development (TDD). The project emphasizes modular architecture, isolated game logic, and unit testing with Jest, featuring a computer opponent that makes random, legal moves.",
+    "techUsed": ["JavaScript", "Jest", "HTML", "CSS"],
+    "demoLink": "https://tonyfred-code.github.io/project-battleship/",
+    "sourceCodeLink": "https://github.com/TonyFred-code/project-battleship",
+    "featured": true,
+    "type": "learning_project"
+  },
+
+  {
+    "projectName": "Mortgage Repayment Calculator",
+    "projectDescription": "A responsive mortgage calculator that computes monthly and total repayments based on user input, with full keyboard accessibility and real-time form validation.",
+    "techUsed": ["React", "Vite", "Tailwind CSS"],
+    "demoLink": "https://mortgage-repayment-calculator-six-tau.vercel.app/",
+    "sourceCodeLink": "https://github.com/TonyFred-code/mortgage-repayment-calculator/",
+    "featured": false,
+    "type": "challenge_project",
+    "source": "Frontend Mentor"
+  },
+
+  {
+    "projectName": "Fruit Era",
+    "projectDescription": "A demo e-commerce shopping cart built with React and Vite, featuring cart state management and component testing with React Testing Library.",
+    "techUsed": ["React", "RTL", "Vite"],
+    "demoLink": "https://project-shopping-cart-gray.vercel.app/",
+    "sourceCodeLink": "https://github.com/TonyFred-code/project-shopping-cart",
+    "featured": true,
+    "type": "learning_project",
+    "source": "Odin Project"
+  }
+]
