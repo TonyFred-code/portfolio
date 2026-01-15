@@ -19,7 +19,7 @@ function Word({ text, startIndex = 0 }) {
 }
 
 Word.propTypes = {
-  text: string,
+  text: string.isRequired,
   startIndex: number,
 };
 
