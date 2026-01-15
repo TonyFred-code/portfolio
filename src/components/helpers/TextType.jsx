@@ -18,7 +18,7 @@ import {
   bool,
   shape,
   func,
-  element,
+  elementType,
 } from "prop-types";
 
 const TextType = ({
@@ -220,5 +220,5 @@ TextType.propTypes = {
   onSentenceComplete: func,
   startOnVisible: bool,
   reverseMode: bool,
-  as: element,
+  as: elementType,
 };
