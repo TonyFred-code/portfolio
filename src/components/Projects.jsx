@@ -1,4 +1,3 @@
-import { ExternalLink } from "lucide-react";
 import RevealOnScroll from "./helpers/RevealOnScroll.jsx";
 import { array } from "prop-types";
 import ProjectCard from "./ProjectCard.jsx";
