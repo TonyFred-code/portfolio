@@ -9,6 +9,7 @@ import { resolveTheme } from "./helpers/themeUtils.js";
 import useTheme from "./hooks/useTheme.jsx";
 import ScrollToHashElement from "./components/helpers/ScrollToHashElement.jsx";
 import TopLoader from "./components/helpers/TopLoader.jsx";
+import ScrollToTopButton from "./components/helpers/ScrollToTopButton.jsx";
 
 function Root() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -39,7 +40,7 @@ function Root() {
         <Outlet />
         <Footer />
       </div>
-
+      {!menuOpen && <ScrollToTopButton />}
       <ToastContainer theme={toastTheme} />
     </>
   );
