@@ -1,5 +1,5 @@
-import { ExternalLink } from "lucide-react";
-import { arrayOf, string } from "prop-types";
+import { ExternalLink, Star } from "lucide-react";
+import { arrayOf, bool, string } from "prop-types";
 
 export default function ProjectCard({
   projectName,
@@ -7,10 +7,14 @@ export default function ProjectCard({
   techUsed,
   demoLink,
   sourceCodeLink,
+  featured = false,
 }) {
   return (
     <div className="p-6 rounded-xl border border-border/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_2px_8px_rgba(59, 130, 246, 0.1)] transition flex flex-col bg-card">
-      <h3 className="text-xl font-bold mb-2">{projectName}</h3>
+      <h3 className="text-xl font-bold mb-2 flex items-center justify-between">
+        <span>{projectName}</span>
+        <span className="text-primary">{featured && <Star />}</span>
+      </h3>
       <p className="text-secondary mb-4 grow">{projectDescription}</p>
       <div className="flex flex-wrap gap-2 mb-4">
         {techUsed.map((tech, key) => {
@@ -66,4 +70,5 @@ ProjectCard.propTypes = {
   techUsed: arrayOf(string),
   demoLink: string,
   sourceCodeLink: string,
+  featured: bool,
 };
