@@ -7,11 +7,11 @@ export default async function fetchProjects() {
     const data = await response.json();
 
     if (!Array.isArray(data) || data.length === 0)
-      throw new Error("failed to fetch");
+      throw new Error("Invalid data fetched.");
 
     return data;
   } catch (error) {
-    console.error("An error occurred", error);
+    console.error("Failed to fetch projects", error);
     throw error;
   }
 }
