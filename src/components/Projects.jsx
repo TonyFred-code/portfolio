@@ -15,7 +15,7 @@ export default function Projects({ projects }) {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {projects.map((project) => {
+            {projects.map((project, index) => {
               const {
                 projectName,
                 projectDescription,
@@ -25,7 +25,7 @@ export default function Projects({ projects }) {
               } = project;
               return (
                 <ProjectCard
-                  key={projectName.toLowerCase()}
+                  key={`${projectName.toLowerCase()}:index${index}`}
                   projectName={projectName}
                   projectDescription={projectDescription}
                   techUsed={techUsed}
