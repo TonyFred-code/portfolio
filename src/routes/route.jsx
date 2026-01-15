@@ -4,21 +4,7 @@ import projectsLoader from "../loaders/projectsLoader.js";
 import Error from "../pages/ErrorPage.jsx";
 import Index from "../pages/Index.jsx";
 import Showcase from "../pages/Showcase.jsx";
-import randomInteger from "../helpers/randomInteger.js";
-
-const indexLoader = async () => {
-  const LOADER_DELAY = randomInteger(0, 120);
-
-  await new Promise((resolve) => setTimeout(resolve, LOADER_DELAY));
-  return null;
-};
-
-const showcaseLoader = async () => {
-  const LOADER_DELAY = randomInteger(0, 120);
-
-  await new Promise((resolve) => setTimeout(resolve, LOADER_DELAY));
-  return null;
-};
+import delayedLoader from "../helpers/delayedLoader.js";
 
 const router = createBrowserRouter([
   {
@@ -36,12 +22,12 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Index />,
-        loader: indexLoader,
+        loader: delayedLoader,
       },
       {
         path: "showcase",
         element: <Showcase />,
-        loader: showcaseLoader,
+        loader: delayedLoader,
       },
     ],
   },
