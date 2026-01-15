@@ -5,19 +5,19 @@ export default function MobileMenu({ menuOpen, setMenuOpen }) {
   const pageLinks = [
     {
       name: "home",
-      path: "#home",
+      path: "/#home",
     },
     {
       name: "about",
-      path: "#about",
+      path: "/#about",
     },
     {
       name: "projects",
-      path: "#projects",
+      path: "/#projects",
     },
     {
       name: "contact",
-      path: "#contact",
+      path: "/#contact",
     },
     {
       name: "showcase",
@@ -37,7 +37,7 @@ export default function MobileMenu({ menuOpen, setMenuOpen }) {
         return (
           <Link
             onClick={() => setMenuOpen(false)}
-            to={`${link.path}`}
+            to={link.path}
             key={link.name}
             className={`text-2xl font-semibold capitalize text-foreground my-4 transform transition-transform duration-300 ${
               menuOpen ? "opacity-100 translate-y-0" : "translate-y-5 opacity-0"
