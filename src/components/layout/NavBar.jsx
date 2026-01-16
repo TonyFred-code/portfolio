@@ -1,31 +1,9 @@
 import { bool, func } from "prop-types";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { NAVIGATION_LINKS } from "../../constants/navigationLinks.js";
 
 export default function NavBar({ menuOpen, setMenuOpen }) {
-  const pageLinks = [
-    {
-      name: "home",
-      path: "/#home",
-    },
-    {
-      name: "about",
-      path: "/#about",
-    },
-    {
-      name: "projects",
-      path: "/#projects",
-    },
-    {
-      name: "contact",
-      path: "/#contact",
-    },
-    {
-      name: "showcase",
-      path: "/showcase",
-    },
-  ];
-
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
   }, [menuOpen]);
@@ -64,7 +42,7 @@ export default function NavBar({ menuOpen, setMenuOpen }) {
           </div>
 
           <div className="hidden md:flex items-center space-x-8">
-            {pageLinks.map((item) => (
+            {NAVIGATION_LINKS.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
