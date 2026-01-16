@@ -16,6 +16,7 @@ export default function NavBar({ menuOpen, setMenuOpen }) {
 
   const suppressAutoHideRef = useRef(false);
   const scrollTimeoutRef = useRef(null);
+  const lastScrollY = useRef(window.scrollY);
 
   function handleNavigating() {
     suppressAutoHideRef.current = true;
@@ -23,7 +24,6 @@ export default function NavBar({ menuOpen, setMenuOpen }) {
   }
 
   useEffect(() => {
-    let lastScrollY = window.scrollY;
     let ticking = false;
 
     function controlNavBar() {
@@ -47,7 +47,7 @@ export default function NavBar({ menuOpen, setMenuOpen }) {
         setIsVisible(true);
       }
 
-      lastScrollY = currentScrollY;
+      lastScrollY.current = currentScrollY;
     }
 
     function onScroll() {
