@@ -2,7 +2,7 @@ import { string } from "prop-types";
 import { useLayoutEffect, useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 
-export default function ScrollToHashElement({
+export default function ScrollController({
   behavior = "auto",
   initialBehavior = "auto",
   inline = "nearest",
@@ -21,6 +21,12 @@ export default function ScrollToHashElement({
     setHash(location.hash || window.location.hash);
     setCount((count) => count + 1);
   }, [location]);
+
+  useEffect(() => {
+    if (!location.hash) {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname, location.hash]);
 
   useEffect(() => {
     const handleLocationChange = () => {
@@ -87,7 +93,7 @@ export default function ScrollToHashElement({
   return null;
 }
 
-ScrollToHashElement.propTypes = {
+ScrollController.propTypes = {
   behavior: string,
   initialBehavior: string,
   inline: string,
