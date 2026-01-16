@@ -1,22 +1,42 @@
 import { bool, func } from "prop-types";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { NAVIGATION_LINKS } from "../../constants/navigationLinks.js";
 
 export default function NavBar({ menuOpen, setMenuOpen }) {
+  const [isVisible, setIsVisible] = useState(true);
+
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
   }, [menuOpen]);
 
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    function controlNavBar() {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+
+      lastScrollY = currentScrollY;
+    }
+
+    window.addEventListener("scroll", controlNavBar);
+
+    return () => window.removeEventListener("scroll", controlNavBar);
+  }, []);
+
   return (
     <nav
-      className="
-    fixed top-0 w-full z-40
+      className={`fixed top-0 w-full z-40
     bg-background/10
     backdrop-blur-lg
-    border-b border-border/10
-    shadow-sm dark:shadow-lg
-  "
+    border-b border-border/10 transition-transform duration-300
+    shadow-sm dark:shadow-lg ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
     >
       <div className="max-w-5xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
