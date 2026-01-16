@@ -37,7 +37,7 @@ export default function ScrollToTopButton() {
       {showScrollToTopBtn ? (
         <button
           type="button"
-          className="fixed z-50 bottom-4 right-4 rounded-md bg-primary text-primary-foreground border-none p-1.5"
+          className="fixed z-50 bottom-4 right-4 rounded-md bg-primary text-primary-foreground border-none p-1.5 cursor-pointer hover:bg-primary/70 hover:scale-105"
           onClick={scrollToTop}
         >
           <ArrowUp size={18} />

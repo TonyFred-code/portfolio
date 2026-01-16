@@ -1,6 +1,8 @@
 # Modern Portfolio Website — React + TailwindCSS
 
-A fast, responsive, and customizable personal portfolio built with React, Vite, and TailwindCSS. Designed for performance, accessibility, and easy deployment. Includes a client-side contact form powered by EmailJS.
+A fast, responsive, and personal portfolio built with React, Vite, and TailwindCSS.
+Designed for performance, accessibility, and easy deployment.
+Includes a client-side contact form powered by EmailJS.
 
 ---
 
@@ -19,7 +21,6 @@ A fast, responsive, and customizable personal portfolio built with React, Vite, 
 - [Overview](#overview)
 - [Tech Stack](#tech-stack)
 - [Key Features](#key-features)
-- [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
 - [Environment Variables](#environment-variables)
 - [Screenshots](#screenshots)
@@ -33,7 +34,11 @@ A fast, responsive, and customizable personal portfolio built with React, Vite, 
 
 ## Overview
 
-This project is a modern portfolio website built with React and TailwindCSS, bundled using Vite for fast development and optimized production builds. It supports light/dark themes, responsive layouts, animated visuals, and a functional contact form using EmailJS without a backend.
+This project is a modern portfolio website built with React and TailwindCSS,
+bundled using Vite for fast development and optimized production builds.
+It supports light/dark themes, responsive layouts, animated visuals,
+and a functional contact form using EmailJS without a backend.
+It also includes a showcase page featuring a number of projects.
 
 ---
 
@@ -45,47 +50,30 @@ This project is a modern portfolio website built with React and TailwindCSS, bun
 - **Lucide Icons** — Consistent iconography
 - **EmailJS** — Client-side email handling
 - **Vercel** — Hosting and CI/CD
+- **gsap** - Text type animation.
 
 ---
 
 ## Key Features
 
 - **Theme Toggle**
-  - Light/Dark mode with persisted preference (localStorage)
+  - Light/Dark/System mode with persisted preference (localStorage)
 
 - **Responsive UI**
   - Mobile-first layout with adaptive navigation
   - Glassmorphism effects for menus and cards
 
-- **Animated Backgrounds**
-  - Subtle motion for visual depth without performance cost
-
 - **Projects Showcase**
-  - Project cards with screenshots, tech stack tags, and external links
+  - Project cards with tech stack tags and external links (demo and source code)
 
 - **Contact Section**
   - Social links
   - Contact form with EmailJS integration and toast notifications
 
+- **Project Showcase Page**
+  - Featuring portfolio worthy projects
+
 ---
-
-## Project Structure
-
-```text
-.
-├── src/
-│   ├── components/      # Reusable UI components
-│   │   ├── sections/          # Page sections (Hero, Projects, Contact)
-│   ├── assets/          # Images and static assets
-│   ├── App.jsx
-│   ├── Index.css
-│   └── main.jsx
-├── public/
-├── index.html
-├── tailwind.config.js
-├── vite.config.js
-└── package.json
-```
 
 ## Getting Started
 
@@ -101,13 +89,13 @@ To run this project locally, follow these steps:
 - Clone your fork of the repository:
 
 ```bash
-git clone https://github.com/yourusername/react-tailwind-portfolio.git
+git clone git@github.com:your-username/portfolio.git
 ```
 
 - Navigate to the project directory
 
 ```bash
-cd react-tailwind-portfolio
+cd portfolio
 ```
 
 - Install dependencies
@@ -147,9 +135,9 @@ These are required for the contact form to function correctly.
 
 Project Showcase:
 
-![Hero section:Dark](./screenshots/home-section-dark.png)
+![Hero section:Dark](./screenshots/home-section-dark-v2.png)
 
-![Hero section:Light](./screenshots/home-section-light.png)
+![Hero section:Light](./screenshots/home-section-light-v2.png)
 
 ## Deployment
 
@@ -181,7 +169,9 @@ The site will be hosted at:
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more details. _Let me know if you'd like further modifications! 🚀_
+This project is licensed under the MIT License.
+See the [LICENSE](./LICENSE) file for more details.
+_Let me know if you'd like further modifications! 🚀_
 
 ## References
 
@@ -197,11 +187,15 @@ This project is licensed under the MIT License. See the [LICENSE](./LICENSE) fil
 
 - [Vercel](https://vercel.com)
 
+- [React Bits](https://reactbits.dev/)
+
 ## Attribution
 
-The favicon used in this project was generated using the following graphics from Twitter Twemoji:
+The favicon used in this project was generated using
+the following graphics from Twitter Twemoji:
 
 - Graphics Title: 1f47e.svg
-- [Graphics Author](https://github.com/twitter/twemoji): Copyright 2020 Twitter, Inc and other contributors
+- [Graphics Author](https://github.com/twitter/twemoji):
+  Copyright 2020 Twitter, Inc and other contributors
 - [Graphics Source](https://github.com/twitter/twemoji/blob/master/assets/svg/1f47e.svg)
 - [Graphics License](https://creativecommons.org/licenses/by/4.0/): CC-BY 4.0

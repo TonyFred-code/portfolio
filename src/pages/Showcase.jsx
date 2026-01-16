@@ -6,6 +6,7 @@ export default function Showcase() {
   const projects = useRouteLoaderData("root");
 
   // TODO:
+  // add backend projects and full stack projects [when built :( ]
   // add logic for filtering by tech used
   // add logic for filtering by project type (Personal, Academic, Client,Contract, Experiment etc.)
 
@@ -17,8 +18,7 @@ export default function Showcase() {
             <h1 className="text-3xl md:text-4xl font-bold">Project Showcase</h1>
             <p className="mt-3 text-foreground/70 max-w-xl mx-auto">
               A curated collection of projects I&apos;ve built, exploring
-              frontend and backend architecture, performance, and user
-              experience.
+              frontend architecture, performance, and user experience.
             </p>
           </header>
 

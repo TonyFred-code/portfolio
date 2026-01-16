@@ -7,7 +7,7 @@ import { ToastContainer } from "react-toastify";
 import { Outlet } from "react-router-dom";
 import { resolveTheme } from "./helpers/themeUtils.js";
 import useTheme from "./hooks/useTheme.jsx";
-import ScrollToHashElement from "./components/helpers/ScrollToHashElement.jsx";
+import ScrollController from "./components/helpers/ScrollController.jsx";
 import TopLoader from "./components/helpers/TopLoader.jsx";
 import ScrollToTopButton from "./components/helpers/ScrollToTopButton.jsx";
 
@@ -33,7 +33,7 @@ function Root() {
   return (
     <>
       <TopLoader />
-      <ScrollToHashElement behavior="smooth" />
+      <ScrollController behavior="smooth" />
       <div className={`min-h-screen bg-background text-foreground`}>
         <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />

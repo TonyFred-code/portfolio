@@ -1,30 +1,8 @@
 import { bool, func } from "prop-types";
 import { Link } from "react-router-dom";
+import { NAVIGATION_LINKS } from "../../constants/navigationLinks.js";
 
 export default function MobileMenu({ menuOpen, setMenuOpen }) {
-  const pageLinks = [
-    {
-      name: "home",
-      path: "/#home",
-    },
-    {
-      name: "about",
-      path: "/#about",
-    },
-    {
-      name: "projects",
-      path: "/#projects",
-    },
-    {
-      name: "contact",
-      path: "/#contact",
-    },
-    {
-      name: "showcase",
-      path: "/showcase",
-    },
-  ];
-
   return (
     <div
       className={`fixed top-0 left-0 w-full bg-background/10 backdrop-blur-sm z-40 flex flex-col items-center justify-center transition-all duration-300 ease-in-out ${
@@ -33,7 +11,7 @@ export default function MobileMenu({ menuOpen, setMenuOpen }) {
           : "h-0 opacity-0 pointer-events-none"
       }`}
     >
-      {pageLinks.map((link) => {
+      {NAVIGATION_LINKS.map((link) => {
         return (
           <Link
             onClick={() => setMenuOpen(false)}
