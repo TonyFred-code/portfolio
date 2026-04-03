@@ -14,7 +14,7 @@ export default function About() {
   const frontendSkills = [
     "React",
     "CSS",
-    "Typescript",
+    "JavaScript",
     "TailwindCSS",
     "HTML",
     "Git & GitHub",
