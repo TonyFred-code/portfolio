@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.3.0] - 2026-07-12
+
+### Added
+
+- Updated projects listing with a newly built project - Anon Clubhouse
+
+### Changed
+
+- Included end year for last work experience
+
 ## [2.2.0] - 2026-04-03
 
 ### Added
