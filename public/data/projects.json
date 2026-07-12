@@ -1,5 +1,22 @@
 [
   {
+    "projectName": "Anon Clubhouse",
+    "projectDescription": "A full-stack anonymous posting platform where members are known inside the clubhouse but anonymous to outsiders. Features role-based access (Guest/Registered/Member/Admin), a referral-code-gated membership system, and a paginated post feed.",
+    "techUsed": [
+      "Node.js",
+      "Express",
+      "EJS",
+      "PostgreSQL",
+      "Passport.js",
+      "Tailwind CSS v4"
+    ],
+    "demoLink": "https://anon-members-only.onrender.com",
+    "sourceCodeLink": "https://github.com/TonyFred-code/anon-members-only",
+    "featured": true,
+    "type": "learning_project",
+    "source": "Odin Project"
+  },
+  {
     "projectName": "Emoji Flipper",
     "projectDescription": "A fun emoji flipping game built with React and Vite",
     "techUsed": ["React", "Vite"],
