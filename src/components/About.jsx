@@ -109,8 +109,7 @@ export default function About() {
               </h3>
               <div className="space-y-3 text-secondary">
                 <h4 className="font-semibold text-foreground">
-                  Frontend Developer (Volunteer) at GartekCloude (March 2024 -
-                  Present)
+                  Frontend Developer (Volunteer) at GartekCloude (2024 - 2025)
                 </h4>
                 <ul className="list-disc list-inside mt-2">
                   <li>
