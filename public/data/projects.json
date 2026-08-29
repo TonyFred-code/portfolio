@@ -114,5 +114,21 @@
     "featured": false,
     "type": "challenge_project",
     "source": "Frontend Mentor"
+  },
+  {
+    "projectName": "Frontend, From First Principles",
+    "projectDescription": "A content-heavy Next.js site teaching frontend fundamentals from the ground up — 20 chapters covering everything from the browser render pipeline to deployment. Built as the frontend companion to a friend's backend-focused site. First vibe-coded build: AI-assisted end-to-end, with each feature scoped, reviewed, and shipped branch by branch.",
+    "techUsed": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS v4",
+      "MDX",
+      "Vitest"
+    ],
+    "demoLink": "https://frontend-from-first-principles.vercel.app/",
+    "sourceCodeLink": "https://github.com/TonyFred-code/frontend-from-first-principles",
+    "featured": true,
+    "type": "vibe_coded_project"
   }
 ]
