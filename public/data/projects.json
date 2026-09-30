@@ -17,6 +17,25 @@
     "source": "Odin Project"
   },
   {
+    "projectName": "Drive Box",
+    "projectDescription": "A cloud file storage web application that allows users to organize files into nested directories, track storage quotas in real time, and manage uploads. Features session-based authentication, soft deletes with cascading subtree deletion, and cloud-backed file hosting.",
+    "techUsed": [
+      "Node.js",
+      "Express",
+      "EJS",
+      "PostgreSQL",
+      "Prisma",
+      "Supabase Storage",
+      "Passport.js",
+      "Tailwind CSS v4"
+    ],
+    "demoLink": "https://drive-box.onrender.com",
+    "sourceCodeLink": "https://github.com/TonyFred-code/drive-box",
+    "featured": true,
+    "type": "learning_project",
+    "source": "Odin Project"
+  },
+  {
     "projectName": "Emoji Flipper",
     "projectDescription": "A fun emoji flipping game built with React and Vite",
     "techUsed": ["React", "Vite"],
@@ -32,7 +51,7 @@
     "techUsed": ["React", "Vite"],
     "demoLink": "https://intelligent-cv-generator.vercel.app/",
     "sourceCodeLink": "https://github.com/TonyFred-code/project-cv-generator",
-    "featured": true,
+    "featured": false,
     "type": "learning_project",
     "source": "Odin Project"
   },
